@@ -10,6 +10,6 @@
     	maxRequests="512"
     />   
     
-	<sqlMap resource="simple/user.xml" /> 
-    <sqlMap resource="simple/post.xml" />
+	<sqlMap resource="META-INF/sqlmap-conf/user.xml" /> 
+    <sqlMap resource="META-INF/sqlmap-conf/post.xml" />
 </sqlMapConfig>

@@ -11,13 +11,13 @@
       users
     WHERE id = #id#	
 	</select> 
-	
+
 	<insert id="addUser" parameterClass="User">
 		INSERT INTO
 			users
 		VALUES(#id#, #name#, #password#)
 	</insert>
-	
+
 	<delete id="deleteUser" parameterClass="String">
 		DELETE FROM
 			users
@@ -25,3 +25,4 @@
 			id = #id#
 	</delete>
 </sqlMap>
+

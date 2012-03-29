@@ -22,7 +22,7 @@ public class Thrift {
 			PostService.Iface handler  = (PostService.Iface) context.getBean("postHandler");
 			PostService.Processor<PostService.Iface> processor = new Processor<Iface>(handler);
 			
-			TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(8081);
+			TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(8082);
 			TServer server = new THsHaServer(new Args(serverTransport).workerThreads(10).processor(processor));
 			System.out.println("Server is ready!!!");
 			server.serve();
