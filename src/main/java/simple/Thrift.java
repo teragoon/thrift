@@ -14,7 +14,7 @@ import simple.PostService.Processor;
 
 public class Thrift {
     	
-	ppublic static void main(String[] args) {
+	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				Config.class);
 				
