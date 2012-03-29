@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="postSvc">	
+	<typeAlias alias="Post" type="simple.Post"/>
+
+	<select id="getPost" parameterClass="Integer" resultClass="Post">				
+		SELECT /* postSvc.getPost */
+			*
+        FROM
+            post
+        WHERE postId = #postId#	
+	</select>
+    
+    <select id="getPostsBySnsId" parameterClass="Integer" resultClass="Post">    			
+		SELECT /* postSvc.getPostsBySnsId */
+			*
+        FROM
+            post
+        WHERE snsId = #snsId#
+	</select>
+    
+    <select id="getPostsAll" resultClass="Post">        		
+		SELECT /* postSvc.getPostsAll */
+			*
+        FROM
+            post
+        limit 10
+	</select>
+	
+	<insert id="addPost" parameterClass="Post">
+		INSERT INTO
+			post
+		VALUES(#snsId#, #nickName#, #title#, #content#, #imgUrl#)
+	</insert>
+	
+	<delete id="delPost" parameterClass="Integer">
+		DELETE FROM
+			post
+		WHERE
+			postId = #postId#
+	</delete>
+</sqlMap>

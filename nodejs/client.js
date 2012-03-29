@@ -1,32 +1,54 @@
-var thrift = require('thrift');
+var thrift = require('thrift'),
+    Post = require('./gen-nodejs/PostService.js'),
+    ptypes = require('./gen-nodejs/post_types.js');
 
-var User = require('./gen-nodejs/UserService.js'),
-    ttypes = require('./gen-nodejs/user_types.js');
-
-var connection = thrift.createConnection('203.245.50.98', 9090),
-    client = thrift.createClient(User, connection);
-
-var user = new ttypes.User({id:"seosh81", name:"howard", password:"1234"});
+var connection = thrift.createConnection('localhost', 8081),
+    client = thrift.createClient(Post, connection);
 
 connection.on('error', function(err) {
     console.error(err);
 });
 
-console.log('hi');
-client.store(user, function(err, res) {
-    console.log('in store');
-    if (err) {
-	console.error(err);
-    } else {
-	console.log("client stored:", user.name);
-	client.get('seosh81', function(err, response) {
-	    if (err) {
-		console.error(err);
-		connection.end();
-	    } else {
-		console.log("client get:", response.name);
-		connection.end();
-	    }
-	});
-    }
-});
+
+exports.setPost = function(post, callback){
+    client.store(post, function(err, res){
+        if(err) callback(err);
+        else{
+            console.log("client res: " + res);
+            callback();
+        }
+    });
+};
+
+exports.getPost = function(postId, callback){
+    client.getPost(postId, function(err, res){
+        if(err) callback(err);
+        else{
+            console.log("client res: ");
+            console.dir(res);
+            callback(res);
+        }
+    });
+};
+
+exports.getPostsBySnsId = function(snsId, callback){
+    client.getPostsBySnsId(snsId, function(err, res){
+        if(err) callback(err);
+        else{
+            console.log("client res: ");
+            console.dir(res);
+            callback(res);
+        }
+    });
+};
+
+exports.getPostsAll = function(snsId, callback){
+    client.getPostsAll(snsId, function(err, res){
+        if(err) callback(err);
+        else{
+            console.log("client res: ");
+            console.dir(res);
+            callback(res);
+        }
+    });
+};
