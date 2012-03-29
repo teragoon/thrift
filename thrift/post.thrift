@@ -1,8 +1,8 @@
 namespace java simple
 
 struct Post {
-    1: int postId,
-    2: int snsId,
+    1: i32 postId,
+    2: i32 snsId,
     3: string nickName,
     4: string title,
     5: string content,
@@ -11,7 +11,7 @@ struct Post {
 
 service PostService {
     void store(1: Post post),
-    Post getPost(1: int postId),
-    List<Post> getPostsBySnsId(1: int snsId),
-    List<Post> getPostsAll()
+    Post getPost(1: i32 postId),
+    list<Post> getPostsBySnsId(1: i32 snsId),
+    list<Post> getPostsAll()
 }
