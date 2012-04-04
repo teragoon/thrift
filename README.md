@@ -37,11 +37,11 @@
   
   2. thrift 로 코드 생성
   
-    thrift --gen <language> <Thrift filename>
+    thrift --gen \<language\> \<Thrift filename\>
     
-    ex) <language> = java  또는 js:node 등등
+    ex) \<language\> = java  또는 js:node 등등
   
-  3. gen-language 폴더에 파일 사용 코딩
+  3. gen-\<language\> 폴더에 파일 사용 코딩
     
 ##maven 설치
 
@@ -58,12 +58,12 @@
     source /etc/profile
   5. maven repository 설정
     vi 설치폴더/conf/settings.xml 
-      <!-- localRepository
+      \<!-- localRepository
         | The path to the local repository maven will use to store artifacts.
         |
         | Default: ~/.m2/repository
-      -->
-      <localRepository>원하는 폴더</localRepository>
+      --\>
+      \<localRepository\>원하는 폴더\</localRepository\>
     
 ##실행
   1. git clone
