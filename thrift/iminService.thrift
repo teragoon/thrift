@@ -91,5 +91,5 @@ service IminThriftService {
   List<Attachment> findAttachments(User user),
   List<Attachment> findAttachments(Post post),
   void submitAttachment(Post post, Attachment attachment),
-  void deleteAttachment(Attachment attachment);
+  void deleteAttachment(Attachment attachment)
 }
