@@ -1,4 +1,4 @@
-namespace com.kthcorp.imin.server.thrift
+namespace java com.kthcorp.imin.server.thrift
 
 struct User {
   1: i32 id,
@@ -51,45 +51,56 @@ struct Attachment {
 }
 
 
-
 service IminThriftService {
   User signup(1: string username, 2: string password),
+  
   void finkout(1: string username),
+  
   AuthToken login(1: string username, 2: string password),
+  
   AuthToken login(1: string token),
+  
   void logout(1: AuthToken token),
-  User findUser(int id),
-  User findUser(String username),
-  List<User> findUsers(String expr),
-
-  List<User> getFollowers(User user),
-
-  List<User> getFollowings(User user),
   
-  Post findPost(i32 id),
-
-  List<Post> findPosts(Poi poi),
-
-  List<Post> findPosts(User user),
-
-  List<Post> findPosts(Position position, double radius, String expr),
-
-  void submitPost(Post post),
-    
-  void deletePost(Post post),
+  User findUserById(1: i32 id),
   
-  Comment findComment(i32 id),
+  User findUserByName(1: string username),
+  
+  List<User> findUsers(1: string expr),
+  
+  List<User> getFollowers(1: User user),
+  
+  List<User> getFollowings(1: User user),
+  
+  Post findPostById(1: i32 id),
 
-  List<Comment> findComments(User user),
+  List<Post> findPostsByPoi(1: Poi poi),
 
-  List<Comment> findComments(Post post),
+  List<Post> findPostsByUser(1: User user),
 
-  void submitComment(Post post, Comment comment),
+  List<Post> findPosts(1: Position position, 2: double radius, 3: string expr),
+
+  void submitPost(1: Post post),
     
-  void deleteComment(Comment comment),
-  Attachment findAttachment(i32 id),
-  List<Attachment> findAttachments(User user),
-  List<Attachment> findAttachments(Post post),
-  void submitAttachment(Post post, Attachment attachment),
-  void deleteAttachment(Attachment attachment)
+  void deletePost(1: Post post),
+  
+  Comment findCommentById(1: i32 id),
+
+  List<Comment> findCommentsByUser(1: User user),
+
+  List<Comment> findCommentsByPost(1: Post post),
+
+  void submitComment(1: Post post, 2: Comment comment),
+    
+  void deleteComment(1: Comment comment),
+  
+  Attachment findAttachmentById(1: i32 id),
+  
+  List<Attachment> findAttachmentsByUser(1: User user),
+  
+  List<Attachment> findAttachmentsByPost(1: Post post),
+  
+  void submitAttachment(1: Post post, 2: Attachment attachment),
+  
+  void deleteAttachment(1: Attachment attachment)
 }
