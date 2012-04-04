@@ -6,7 +6,7 @@
 
 	<select id="getUser" parameterClass="String" resultClass="User">				
 		SELECT /* userSvc.getUser */
-			id, name, password
+			uid, name, password
     FROM
       users
     WHERE id = #id#	

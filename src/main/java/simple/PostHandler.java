@@ -41,12 +41,12 @@ public class PostHandler implements PostService.Iface {
 	}
     
     @Override
-    public List<Post> getPostsBySnsId(int snsId) throws TException{
+    public List<Post> getPostsByUid(int uid) throws TException{
         List<Post> posts = null;
         try{
             posts = (List<Post>) sqlMap
-                    .queryForList("postSvc.getPostsBySnsId", snsId);
-            System.out.println("out getPostsBySnsId");
+                    .queryForList("postSvc.getPostsByUid", uid);
+            System.out.println("out getPostsByUid");
         } catch (SQLException e) {
     		e.printStackTrace();
 		}

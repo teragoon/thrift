@@ -12,12 +12,12 @@
         WHERE postId = #postId#	
 	</select>
     
-    <select id="getPostsBySnsId" parameterClass="Integer" resultClass="Post">    			
-		SELECT /* postSvc.getPostsBySnsId */
+    <select id="getPostsByUid" parameterClass="Integer" resultClass="Post">    			
+		SELECT /* postSvc.getPostsByUid */
 			*
         FROM
             post
-        WHERE snsId = #snsId#
+        WHERE uid = #uid#
 	</select>
     
     <select id="getPostsAll" resultClass="Post">        		
@@ -31,8 +31,8 @@
 	<insert id="addPost" parameterClass="Post">
 		INSERT INTO
 			post
-		(snsId, nickName, title, content, imgUrl)
-		VALUES(#snsId#, #nickName#, #title#, #content#, #imgUrl#)
+		(uid, nickName, title, content, imgUrl)
+		VALUES(#uid#, #nickName#, #title#, #content#, #imgUrl#)
 	</insert>
 	
 	<delete id="delPost" parameterClass="Integer">

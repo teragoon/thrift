@@ -31,7 +31,7 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Post");
 
   private static final org.apache.thrift.protocol.TField POST_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("postId", org.apache.thrift.protocol.TType.I32, (short)1);
-  private static final org.apache.thrift.protocol.TField SNS_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("snsId", org.apache.thrift.protocol.TType.I32, (short)2);
+  private static final org.apache.thrift.protocol.TField UID_FIELD_DESC = new org.apache.thrift.protocol.TField("uid", org.apache.thrift.protocol.TType.I32, (short)2);
   private static final org.apache.thrift.protocol.TField NICK_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("nickName", org.apache.thrift.protocol.TType.STRING, (short)3);
   private static final org.apache.thrift.protocol.TField TITLE_FIELD_DESC = new org.apache.thrift.protocol.TField("title", org.apache.thrift.protocol.TType.STRING, (short)4);
   private static final org.apache.thrift.protocol.TField CONTENT_FIELD_DESC = new org.apache.thrift.protocol.TField("content", org.apache.thrift.protocol.TType.STRING, (short)5);
@@ -44,7 +44,7 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
   }
 
   public int postId; // required
-  public int snsId; // required
+  public int uid; // required
   public String nickName; // required
   public String title; // required
   public String content; // required
@@ -53,7 +53,7 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     POST_ID((short)1, "postId"),
-    SNS_ID((short)2, "snsId"),
+    UID((short)2, "uid"),
     NICK_NAME((short)3, "nickName"),
     TITLE((short)4, "title"),
     CONTENT((short)5, "content"),
@@ -74,8 +74,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
       switch(fieldId) {
         case 1: // POST_ID
           return POST_ID;
-        case 2: // SNS_ID
-          return SNS_ID;
+        case 2: // UID
+          return UID;
         case 3: // NICK_NAME
           return NICK_NAME;
         case 4: // TITLE
@@ -125,14 +125,14 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
 
   // isset id assignments
   private static final int __POSTID_ISSET_ID = 0;
-  private static final int __SNSID_ISSET_ID = 1;
+  private static final int __UID_ISSET_ID = 1;
   private BitSet __isset_bit_vector = new BitSet(2);
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.POST_ID, new org.apache.thrift.meta_data.FieldMetaData("postId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
-    tmpMap.put(_Fields.SNS_ID, new org.apache.thrift.meta_data.FieldMetaData("snsId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.UID, new org.apache.thrift.meta_data.FieldMetaData("uid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.NICK_NAME, new org.apache.thrift.meta_data.FieldMetaData("nickName", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
@@ -151,7 +151,7 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
 
   public Post(
     int postId,
-    int snsId,
+    int uid,
     String nickName,
     String title,
     String content,
@@ -160,8 +160,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
     this();
     this.postId = postId;
     setPostIdIsSet(true);
-    this.snsId = snsId;
-    setSnsIdIsSet(true);
+    this.uid = uid;
+    setUidIsSet(true);
     this.nickName = nickName;
     this.title = title;
     this.content = content;
@@ -175,7 +175,7 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
     __isset_bit_vector.clear();
     __isset_bit_vector.or(other.__isset_bit_vector);
     this.postId = other.postId;
-    this.snsId = other.snsId;
+    this.uid = other.uid;
     if (other.isSetNickName()) {
       this.nickName = other.nickName;
     }
@@ -198,8 +198,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
   public void clear() {
     setPostIdIsSet(false);
     this.postId = 0;
-    setSnsIdIsSet(false);
-    this.snsId = 0;
+    setUidIsSet(false);
+    this.uid = 0;
     this.nickName = null;
     this.title = null;
     this.content = null;
@@ -229,27 +229,27 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
     __isset_bit_vector.set(__POSTID_ISSET_ID, value);
   }
 
-  public int getSnsId() {
-    return this.snsId;
+  public int getUid() {
+    return this.uid;
   }
 
-  public Post setSnsId(int snsId) {
-    this.snsId = snsId;
-    setSnsIdIsSet(true);
+  public Post setUid(int uid) {
+    this.uid = uid;
+    setUidIsSet(true);
     return this;
   }
 
-  public void unsetSnsId() {
-    __isset_bit_vector.clear(__SNSID_ISSET_ID);
+  public void unsetUid() {
+    __isset_bit_vector.clear(__UID_ISSET_ID);
   }
 
-  /** Returns true if field snsId is set (has been assigned a value) and false otherwise */
-  public boolean isSetSnsId() {
-    return __isset_bit_vector.get(__SNSID_ISSET_ID);
+  /** Returns true if field uid is set (has been assigned a value) and false otherwise */
+  public boolean isSetUid() {
+    return __isset_bit_vector.get(__UID_ISSET_ID);
   }
 
-  public void setSnsIdIsSet(boolean value) {
-    __isset_bit_vector.set(__SNSID_ISSET_ID, value);
+  public void setUidIsSet(boolean value) {
+    __isset_bit_vector.set(__UID_ISSET_ID, value);
   }
 
   public String getNickName() {
@@ -358,11 +358,11 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
       }
       break;
 
-    case SNS_ID:
+    case UID:
       if (value == null) {
-        unsetSnsId();
+        unsetUid();
       } else {
-        setSnsId((Integer)value);
+        setUid((Integer)value);
       }
       break;
 
@@ -406,8 +406,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
     case POST_ID:
       return Integer.valueOf(getPostId());
 
-    case SNS_ID:
-      return Integer.valueOf(getSnsId());
+    case UID:
+      return Integer.valueOf(getUid());
 
     case NICK_NAME:
       return getNickName();
@@ -434,8 +434,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
     switch (field) {
     case POST_ID:
       return isSetPostId();
-    case SNS_ID:
-      return isSetSnsId();
+    case UID:
+      return isSetUid();
     case NICK_NAME:
       return isSetNickName();
     case TITLE:
@@ -470,12 +470,12 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
         return false;
     }
 
-    boolean this_present_snsId = true;
-    boolean that_present_snsId = true;
-    if (this_present_snsId || that_present_snsId) {
-      if (!(this_present_snsId && that_present_snsId))
+    boolean this_present_uid = true;
+    boolean that_present_uid = true;
+    if (this_present_uid || that_present_uid) {
+      if (!(this_present_uid && that_present_uid))
         return false;
-      if (this.snsId != that.snsId)
+      if (this.uid != that.uid)
         return false;
     }
 
@@ -541,12 +541,12 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetSnsId()).compareTo(typedOther.isSetSnsId());
+    lastComparison = Boolean.valueOf(isSetUid()).compareTo(typedOther.isSetUid());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetSnsId()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.snsId, typedOther.snsId);
+    if (isSetUid()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.uid, typedOther.uid);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -615,8 +615,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
     sb.append(this.postId);
     first = false;
     if (!first) sb.append(", ");
-    sb.append("snsId:");
-    sb.append(this.snsId);
+    sb.append("uid:");
+    sb.append(this.uid);
     first = false;
     if (!first) sb.append(", ");
     sb.append("nickName:");
@@ -702,10 +702,10 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // SNS_ID
+          case 2: // UID
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.snsId = iprot.readI32();
-              struct.setSnsIdIsSet(true);
+              struct.uid = iprot.readI32();
+              struct.setUidIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -760,8 +760,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
       oprot.writeFieldBegin(POST_ID_FIELD_DESC);
       oprot.writeI32(struct.postId);
       oprot.writeFieldEnd();
-      oprot.writeFieldBegin(SNS_ID_FIELD_DESC);
-      oprot.writeI32(struct.snsId);
+      oprot.writeFieldBegin(UID_FIELD_DESC);
+      oprot.writeI32(struct.uid);
       oprot.writeFieldEnd();
       if (struct.nickName != null) {
         oprot.writeFieldBegin(NICK_NAME_FIELD_DESC);
@@ -804,7 +804,7 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
       if (struct.isSetPostId()) {
         optionals.set(0);
       }
-      if (struct.isSetSnsId()) {
+      if (struct.isSetUid()) {
         optionals.set(1);
       }
       if (struct.isSetNickName()) {
@@ -823,8 +823,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
       if (struct.isSetPostId()) {
         oprot.writeI32(struct.postId);
       }
-      if (struct.isSetSnsId()) {
-        oprot.writeI32(struct.snsId);
+      if (struct.isSetUid()) {
+        oprot.writeI32(struct.uid);
       }
       if (struct.isSetNickName()) {
         oprot.writeString(struct.nickName);
@@ -849,8 +849,8 @@ public class Post implements org.apache.thrift.TBase<Post, Post._Fields>, java.i
         struct.setPostIdIsSet(true);
       }
       if (incoming.get(1)) {
-        struct.snsId = iprot.readI32();
-        struct.setSnsIdIsSet(true);
+        struct.uid = iprot.readI32();
+        struct.setUidIsSet(true);
       }
       if (incoming.get(2)) {
         struct.nickName = iprot.readString();

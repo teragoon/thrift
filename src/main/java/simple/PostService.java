@@ -35,7 +35,7 @@ public class PostService {
 
     public Post getPost(int postId) throws org.apache.thrift.TException;
 
-    public List<Post> getPostsBySnsId(int snsId) throws org.apache.thrift.TException;
+    public List<Post> getPostsByUid(int uid) throws org.apache.thrift.TException;
 
     public List<Post> getPostsAll() throws org.apache.thrift.TException;
 
@@ -47,7 +47,7 @@ public class PostService {
 
     public void getPost(int postId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getPost_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getPostsBySnsId(int snsId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getPostsBySnsId_call> resultHandler) throws org.apache.thrift.TException;
+    public void getPostsByUid(int uid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getPostsByUid_call> resultHandler) throws org.apache.thrift.TException;
 
     public void getPostsAll(org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getPostsAll_call> resultHandler) throws org.apache.thrift.TException;
 
@@ -116,27 +116,27 @@ public class PostService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPost failed: unknown result");
     }
 
-    public List<Post> getPostsBySnsId(int snsId) throws org.apache.thrift.TException
+    public List<Post> getPostsByUid(int uid) throws org.apache.thrift.TException
     {
-      send_getPostsBySnsId(snsId);
-      return recv_getPostsBySnsId();
+      send_getPostsByUid(uid);
+      return recv_getPostsByUid();
     }
 
-    public void send_getPostsBySnsId(int snsId) throws org.apache.thrift.TException
+    public void send_getPostsByUid(int uid) throws org.apache.thrift.TException
     {
-      getPostsBySnsId_args args = new getPostsBySnsId_args();
-      args.setSnsId(snsId);
-      sendBase("getPostsBySnsId", args);
+      getPostsByUid_args args = new getPostsByUid_args();
+      args.setUid(uid);
+      sendBase("getPostsByUid", args);
     }
 
-    public List<Post> recv_getPostsBySnsId() throws org.apache.thrift.TException
+    public List<Post> recv_getPostsByUid() throws org.apache.thrift.TException
     {
-      getPostsBySnsId_result result = new getPostsBySnsId_result();
-      receiveBase(result, "getPostsBySnsId");
+      getPostsByUid_result result = new getPostsByUid_result();
+      receiveBase(result, "getPostsByUid");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPostsBySnsId failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPostsByUid failed: unknown result");
     }
 
     public List<Post> getPostsAll() throws org.apache.thrift.TException
@@ -243,24 +243,24 @@ public class PostService {
       }
     }
 
-    public void getPostsBySnsId(int snsId, org.apache.thrift.async.AsyncMethodCallback<getPostsBySnsId_call> resultHandler) throws org.apache.thrift.TException {
+    public void getPostsByUid(int uid, org.apache.thrift.async.AsyncMethodCallback<getPostsByUid_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      getPostsBySnsId_call method_call = new getPostsBySnsId_call(snsId, resultHandler, this, ___protocolFactory, ___transport);
+      getPostsByUid_call method_call = new getPostsByUid_call(uid, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class getPostsBySnsId_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private int snsId;
-      public getPostsBySnsId_call(int snsId, org.apache.thrift.async.AsyncMethodCallback<getPostsBySnsId_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class getPostsByUid_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private int uid;
+      public getPostsByUid_call(int uid, org.apache.thrift.async.AsyncMethodCallback<getPostsByUid_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.snsId = snsId;
+        this.uid = uid;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getPostsBySnsId", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        getPostsBySnsId_args args = new getPostsBySnsId_args();
-        args.setSnsId(snsId);
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getPostsByUid", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        getPostsByUid_args args = new getPostsByUid_args();
+        args.setUid(uid);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -271,7 +271,7 @@ public class PostService {
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_getPostsBySnsId();
+        return (new Client(prot)).recv_getPostsByUid();
       }
     }
 
@@ -319,7 +319,7 @@ public class PostService {
     private static <I extends Iface> Map<String,  org.apache.thrift.ProcessFunction<I, ? extends  org.apache.thrift.TBase>> getProcessMap(Map<String,  org.apache.thrift.ProcessFunction<I, ? extends  org.apache.thrift.TBase>> processMap) {
       processMap.put("store", new store());
       processMap.put("getPost", new getPost());
-      processMap.put("getPostsBySnsId", new getPostsBySnsId());
+      processMap.put("getPostsByUid", new getPostsByUid());
       processMap.put("getPostsAll", new getPostsAll());
       return processMap;
     }
@@ -356,18 +356,18 @@ public class PostService {
       }
     }
 
-    private static class getPostsBySnsId<I extends Iface> extends org.apache.thrift.ProcessFunction<I, getPostsBySnsId_args> {
-      public getPostsBySnsId() {
-        super("getPostsBySnsId");
+    private static class getPostsByUid<I extends Iface> extends org.apache.thrift.ProcessFunction<I, getPostsByUid_args> {
+      public getPostsByUid() {
+        super("getPostsByUid");
       }
 
-      protected getPostsBySnsId_args getEmptyArgsInstance() {
-        return new getPostsBySnsId_args();
+      protected getPostsByUid_args getEmptyArgsInstance() {
+        return new getPostsByUid_args();
       }
 
-      protected getPostsBySnsId_result getResult(I iface, getPostsBySnsId_args args) throws org.apache.thrift.TException {
-        getPostsBySnsId_result result = new getPostsBySnsId_result();
-        result.success = iface.getPostsBySnsId(args.snsId);
+      protected getPostsByUid_result getResult(I iface, getPostsByUid_args args) throws org.apache.thrift.TException {
+        getPostsByUid_result result = new getPostsByUid_result();
+        result.success = iface.getPostsByUid(args.uid);
         return result;
       }
     }
@@ -1697,22 +1697,22 @@ public class PostService {
 
   }
 
-  public static class getPostsBySnsId_args implements org.apache.thrift.TBase<getPostsBySnsId_args, getPostsBySnsId_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPostsBySnsId_args");
+  public static class getPostsByUid_args implements org.apache.thrift.TBase<getPostsByUid_args, getPostsByUid_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPostsByUid_args");
 
-    private static final org.apache.thrift.protocol.TField SNS_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("snsId", org.apache.thrift.protocol.TType.I32, (short)1);
+    private static final org.apache.thrift.protocol.TField UID_FIELD_DESC = new org.apache.thrift.protocol.TField("uid", org.apache.thrift.protocol.TType.I32, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new getPostsBySnsId_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new getPostsBySnsId_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new getPostsByUid_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new getPostsByUid_argsTupleSchemeFactory());
     }
 
-    public int snsId; // required
+    public int uid; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      SNS_ID((short)1, "snsId");
+      UID((short)1, "uid");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -1727,8 +1727,8 @@ public class PostService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // SNS_ID
-            return SNS_ID;
+          case 1: // UID
+            return UID;
           default:
             return null;
         }
@@ -1769,77 +1769,77 @@ public class PostService {
     }
 
     // isset id assignments
-    private static final int __SNSID_ISSET_ID = 0;
+    private static final int __UID_ISSET_ID = 0;
     private BitSet __isset_bit_vector = new BitSet(1);
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.SNS_ID, new org.apache.thrift.meta_data.FieldMetaData("snsId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+      tmpMap.put(_Fields.UID, new org.apache.thrift.meta_data.FieldMetaData("uid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPostsBySnsId_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPostsByUid_args.class, metaDataMap);
     }
 
-    public getPostsBySnsId_args() {
+    public getPostsByUid_args() {
     }
 
-    public getPostsBySnsId_args(
-      int snsId)
+    public getPostsByUid_args(
+      int uid)
     {
       this();
-      this.snsId = snsId;
-      setSnsIdIsSet(true);
+      this.uid = uid;
+      setUidIsSet(true);
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public getPostsBySnsId_args(getPostsBySnsId_args other) {
+    public getPostsByUid_args(getPostsByUid_args other) {
       __isset_bit_vector.clear();
       __isset_bit_vector.or(other.__isset_bit_vector);
-      this.snsId = other.snsId;
+      this.uid = other.uid;
     }
 
-    public getPostsBySnsId_args deepCopy() {
-      return new getPostsBySnsId_args(this);
+    public getPostsByUid_args deepCopy() {
+      return new getPostsByUid_args(this);
     }
 
     @Override
     public void clear() {
-      setSnsIdIsSet(false);
-      this.snsId = 0;
+      setUidIsSet(false);
+      this.uid = 0;
     }
 
-    public int getSnsId() {
-      return this.snsId;
+    public int getUid() {
+      return this.uid;
     }
 
-    public getPostsBySnsId_args setSnsId(int snsId) {
-      this.snsId = snsId;
-      setSnsIdIsSet(true);
+    public getPostsByUid_args setUid(int uid) {
+      this.uid = uid;
+      setUidIsSet(true);
       return this;
     }
 
-    public void unsetSnsId() {
-      __isset_bit_vector.clear(__SNSID_ISSET_ID);
+    public void unsetUid() {
+      __isset_bit_vector.clear(__UID_ISSET_ID);
     }
 
-    /** Returns true if field snsId is set (has been assigned a value) and false otherwise */
-    public boolean isSetSnsId() {
-      return __isset_bit_vector.get(__SNSID_ISSET_ID);
+    /** Returns true if field uid is set (has been assigned a value) and false otherwise */
+    public boolean isSetUid() {
+      return __isset_bit_vector.get(__UID_ISSET_ID);
     }
 
-    public void setSnsIdIsSet(boolean value) {
-      __isset_bit_vector.set(__SNSID_ISSET_ID, value);
+    public void setUidIsSet(boolean value) {
+      __isset_bit_vector.set(__UID_ISSET_ID, value);
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case SNS_ID:
+      case UID:
         if (value == null) {
-          unsetSnsId();
+          unsetUid();
         } else {
-          setSnsId((Integer)value);
+          setUid((Integer)value);
         }
         break;
 
@@ -1848,8 +1848,8 @@ public class PostService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case SNS_ID:
-        return Integer.valueOf(getSnsId());
+      case UID:
+        return Integer.valueOf(getUid());
 
       }
       throw new IllegalStateException();
@@ -1862,8 +1862,8 @@ public class PostService {
       }
 
       switch (field) {
-      case SNS_ID:
-        return isSetSnsId();
+      case UID:
+        return isSetUid();
       }
       throw new IllegalStateException();
     }
@@ -1872,21 +1872,21 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof getPostsBySnsId_args)
-        return this.equals((getPostsBySnsId_args)that);
+      if (that instanceof getPostsByUid_args)
+        return this.equals((getPostsByUid_args)that);
       return false;
     }
 
-    public boolean equals(getPostsBySnsId_args that) {
+    public boolean equals(getPostsByUid_args that) {
       if (that == null)
         return false;
 
-      boolean this_present_snsId = true;
-      boolean that_present_snsId = true;
-      if (this_present_snsId || that_present_snsId) {
-        if (!(this_present_snsId && that_present_snsId))
+      boolean this_present_uid = true;
+      boolean that_present_uid = true;
+      if (this_present_uid || that_present_uid) {
+        if (!(this_present_uid && that_present_uid))
           return false;
-        if (this.snsId != that.snsId)
+        if (this.uid != that.uid)
           return false;
       }
 
@@ -1898,20 +1898,20 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(getPostsBySnsId_args other) {
+    public int compareTo(getPostsByUid_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      getPostsBySnsId_args typedOther = (getPostsBySnsId_args)other;
+      getPostsByUid_args typedOther = (getPostsByUid_args)other;
 
-      lastComparison = Boolean.valueOf(isSetSnsId()).compareTo(typedOther.isSetSnsId());
+      lastComparison = Boolean.valueOf(isSetUid()).compareTo(typedOther.isSetUid());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetSnsId()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.snsId, typedOther.snsId);
+      if (isSetUid()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.uid, typedOther.uid);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -1933,11 +1933,11 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("getPostsBySnsId_args(");
+      StringBuilder sb = new StringBuilder("getPostsByUid_args(");
       boolean first = true;
 
-      sb.append("snsId:");
-      sb.append(this.snsId);
+      sb.append("uid:");
+      sb.append(this.uid);
       first = false;
       sb.append(")");
       return sb.toString();
@@ -1965,15 +1965,15 @@ public class PostService {
       }
     }
 
-    private static class getPostsBySnsId_argsStandardSchemeFactory implements SchemeFactory {
-      public getPostsBySnsId_argsStandardScheme getScheme() {
-        return new getPostsBySnsId_argsStandardScheme();
+    private static class getPostsByUid_argsStandardSchemeFactory implements SchemeFactory {
+      public getPostsByUid_argsStandardScheme getScheme() {
+        return new getPostsByUid_argsStandardScheme();
       }
     }
 
-    private static class getPostsBySnsId_argsStandardScheme extends StandardScheme<getPostsBySnsId_args> {
+    private static class getPostsByUid_argsStandardScheme extends StandardScheme<getPostsByUid_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPostsBySnsId_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getPostsByUid_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1983,10 +1983,10 @@ public class PostService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // SNS_ID
+            case 1: // UID
               if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-                struct.snsId = iprot.readI32();
-                struct.setSnsIdIsSet(true);
+                struct.uid = iprot.readI32();
+                struct.setUidIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -2002,12 +2002,12 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPostsBySnsId_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getPostsByUid_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        oprot.writeFieldBegin(SNS_ID_FIELD_DESC);
-        oprot.writeI32(struct.snsId);
+        oprot.writeFieldBegin(UID_FIELD_DESC);
+        oprot.writeI32(struct.uid);
         oprot.writeFieldEnd();
         oprot.writeFieldStop();
         oprot.writeStructEnd();
@@ -2015,49 +2015,49 @@ public class PostService {
 
     }
 
-    private static class getPostsBySnsId_argsTupleSchemeFactory implements SchemeFactory {
-      public getPostsBySnsId_argsTupleScheme getScheme() {
-        return new getPostsBySnsId_argsTupleScheme();
+    private static class getPostsByUid_argsTupleSchemeFactory implements SchemeFactory {
+      public getPostsByUid_argsTupleScheme getScheme() {
+        return new getPostsByUid_argsTupleScheme();
       }
     }
 
-    private static class getPostsBySnsId_argsTupleScheme extends TupleScheme<getPostsBySnsId_args> {
+    private static class getPostsByUid_argsTupleScheme extends TupleScheme<getPostsByUid_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getPostsBySnsId_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getPostsByUid_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetSnsId()) {
+        if (struct.isSetUid()) {
           optionals.set(0);
         }
         oprot.writeBitSet(optionals, 1);
-        if (struct.isSetSnsId()) {
-          oprot.writeI32(struct.snsId);
+        if (struct.isSetUid()) {
+          oprot.writeI32(struct.uid);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getPostsBySnsId_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getPostsByUid_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.snsId = iprot.readI32();
-          struct.setSnsIdIsSet(true);
+          struct.uid = iprot.readI32();
+          struct.setUidIsSet(true);
         }
       }
     }
 
   }
 
-  public static class getPostsBySnsId_result implements org.apache.thrift.TBase<getPostsBySnsId_result, getPostsBySnsId_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPostsBySnsId_result");
+  public static class getPostsByUid_result implements org.apache.thrift.TBase<getPostsByUid_result, getPostsByUid_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPostsByUid_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.LIST, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new getPostsBySnsId_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new getPostsBySnsId_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new getPostsByUid_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new getPostsByUid_resultTupleSchemeFactory());
     }
 
     public List<Post> success; // required
@@ -2128,13 +2128,13 @@ public class PostService {
           new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
               new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Post.class))));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPostsBySnsId_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPostsByUid_result.class, metaDataMap);
     }
 
-    public getPostsBySnsId_result() {
+    public getPostsByUid_result() {
     }
 
-    public getPostsBySnsId_result(
+    public getPostsByUid_result(
       List<Post> success)
     {
       this();
@@ -2144,7 +2144,7 @@ public class PostService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public getPostsBySnsId_result(getPostsBySnsId_result other) {
+    public getPostsByUid_result(getPostsByUid_result other) {
       if (other.isSetSuccess()) {
         List<Post> __this__success = new ArrayList<Post>();
         for (Post other_element : other.success) {
@@ -2154,8 +2154,8 @@ public class PostService {
       }
     }
 
-    public getPostsBySnsId_result deepCopy() {
-      return new getPostsBySnsId_result(this);
+    public getPostsByUid_result deepCopy() {
+      return new getPostsByUid_result(this);
     }
 
     @Override
@@ -2182,7 +2182,7 @@ public class PostService {
       return this.success;
     }
 
-    public getPostsBySnsId_result setSuccess(List<Post> success) {
+    public getPostsByUid_result setSuccess(List<Post> success) {
       this.success = success;
       return this;
     }
@@ -2241,12 +2241,12 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof getPostsBySnsId_result)
-        return this.equals((getPostsBySnsId_result)that);
+      if (that instanceof getPostsByUid_result)
+        return this.equals((getPostsByUid_result)that);
       return false;
     }
 
-    public boolean equals(getPostsBySnsId_result that) {
+    public boolean equals(getPostsByUid_result that) {
       if (that == null)
         return false;
 
@@ -2267,13 +2267,13 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(getPostsBySnsId_result other) {
+    public int compareTo(getPostsByUid_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      getPostsBySnsId_result typedOther = (getPostsBySnsId_result)other;
+      getPostsByUid_result typedOther = (getPostsByUid_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -2302,7 +2302,7 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("getPostsBySnsId_result(");
+      StringBuilder sb = new StringBuilder("getPostsByUid_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -2336,15 +2336,15 @@ public class PostService {
       }
     }
 
-    private static class getPostsBySnsId_resultStandardSchemeFactory implements SchemeFactory {
-      public getPostsBySnsId_resultStandardScheme getScheme() {
-        return new getPostsBySnsId_resultStandardScheme();
+    private static class getPostsByUid_resultStandardSchemeFactory implements SchemeFactory {
+      public getPostsByUid_resultStandardScheme getScheme() {
+        return new getPostsByUid_resultStandardScheme();
       }
     }
 
-    private static class getPostsBySnsId_resultStandardScheme extends StandardScheme<getPostsBySnsId_result> {
+    private static class getPostsByUid_resultStandardScheme extends StandardScheme<getPostsByUid_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPostsBySnsId_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getPostsByUid_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2384,7 +2384,7 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPostsBySnsId_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getPostsByUid_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2406,16 +2406,16 @@ public class PostService {
 
     }
 
-    private static class getPostsBySnsId_resultTupleSchemeFactory implements SchemeFactory {
-      public getPostsBySnsId_resultTupleScheme getScheme() {
-        return new getPostsBySnsId_resultTupleScheme();
+    private static class getPostsByUid_resultTupleSchemeFactory implements SchemeFactory {
+      public getPostsByUid_resultTupleScheme getScheme() {
+        return new getPostsByUid_resultTupleScheme();
       }
     }
 
-    private static class getPostsBySnsId_resultTupleScheme extends TupleScheme<getPostsBySnsId_result> {
+    private static class getPostsByUid_resultTupleScheme extends TupleScheme<getPostsByUid_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getPostsBySnsId_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getPostsByUid_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -2434,7 +2434,7 @@ public class PostService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getPostsBySnsId_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getPostsByUid_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
