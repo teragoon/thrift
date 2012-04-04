@@ -197,16 +197,16 @@ PostService_getPost_result.prototype.write = function(output) {
   return;
 };
 
-var PostService_getPostsBySnsId_args = function(args) {
-  this.snsId = null;
+var PostService_getPostsByUid_args = function(args) {
+  this.uid = null;
   if (args) {
-    if (args.snsId !== undefined) {
-      this.snsId = args.snsId;
+    if (args.uid !== undefined) {
+      this.uid = args.uid;
     }
   }
 };
-PostService_getPostsBySnsId_args.prototype = {};
-PostService_getPostsBySnsId_args.prototype.read = function(input) {
+PostService_getPostsByUid_args.prototype = {};
+PostService_getPostsByUid_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -221,7 +221,7 @@ PostService_getPostsBySnsId_args.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.I32) {
-        this.snsId = input.readI32();
+        this.uid = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -238,11 +238,11 @@ PostService_getPostsBySnsId_args.prototype.read = function(input) {
   return;
 };
 
-PostService_getPostsBySnsId_args.prototype.write = function(output) {
-  output.writeStructBegin('PostService_getPostsBySnsId_args');
-  if (this.snsId) {
-    output.writeFieldBegin('snsId', Thrift.Type.I32, 1);
-    output.writeI32(this.snsId);
+PostService_getPostsByUid_args.prototype.write = function(output) {
+  output.writeStructBegin('PostService_getPostsByUid_args');
+  if (this.uid) {
+    output.writeFieldBegin('uid', Thrift.Type.I32, 1);
+    output.writeI32(this.uid);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -250,7 +250,7 @@ PostService_getPostsBySnsId_args.prototype.write = function(output) {
   return;
 };
 
-var PostService_getPostsBySnsId_result = function(args) {
+var PostService_getPostsByUid_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined) {
@@ -258,8 +258,8 @@ var PostService_getPostsBySnsId_result = function(args) {
     }
   }
 };
-PostService_getPostsBySnsId_result.prototype = {};
-PostService_getPostsBySnsId_result.prototype.read = function(input) {
+PostService_getPostsByUid_result.prototype = {};
+PostService_getPostsByUid_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -305,8 +305,8 @@ PostService_getPostsBySnsId_result.prototype.read = function(input) {
   return;
 };
 
-PostService_getPostsBySnsId_result.prototype.write = function(output) {
-  output.writeStructBegin('PostService_getPostsBySnsId_result');
+PostService_getPostsByUid_result.prototype.write = function(output) {
+  output.writeStructBegin('PostService_getPostsByUid_result');
   if (this.success) {
     output.writeFieldBegin('success', Thrift.Type.LIST, 0);
     output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
@@ -502,23 +502,23 @@ PostServiceClient.prototype.recv_getPost = function(input,mtype,rseqid) {
   }
   return callback('getPost failed: unknown result');
 };
-PostServiceClient.prototype.getPostsBySnsId = function(snsId, callback) {
+PostServiceClient.prototype.getPostsByUid = function(uid, callback) {
   this.seqid += 1;
   this._reqs[this.seqid] = callback;
-  this.send_getPostsBySnsId(snsId);
+  this.send_getPostsByUid(uid);
 };
 
-PostServiceClient.prototype.send_getPostsBySnsId = function(snsId) {
+PostServiceClient.prototype.send_getPostsByUid = function(uid) {
   var output = new this.pClass(this.output);
-  output.writeMessageBegin('getPostsBySnsId', Thrift.MessageType.CALL, this.seqid);
-  var args = new PostService_getPostsBySnsId_args();
-  args.snsId = snsId;
+  output.writeMessageBegin('getPostsByUid', Thrift.MessageType.CALL, this.seqid);
+  var args = new PostService_getPostsByUid_args();
+  args.uid = uid;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-PostServiceClient.prototype.recv_getPostsBySnsId = function(input,mtype,rseqid) {
+PostServiceClient.prototype.recv_getPostsByUid = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -527,14 +527,14 @@ PostServiceClient.prototype.recv_getPostsBySnsId = function(input,mtype,rseqid) 
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new PostService_getPostsBySnsId_result();
+  var result = new PostService_getPostsByUid_result();
   result.read(input);
   input.readMessageEnd();
 
   if (null !== result.success) {
     return callback(null, result.success);
   }
-  return callback('getPostsBySnsId failed: unknown result');
+  return callback('getPostsByUid failed: unknown result');
 };
 PostServiceClient.prototype.getPostsAll = function(callback) {
   this.seqid += 1;
@@ -615,14 +615,14 @@ PostServiceProcessor.prototype.process_getPost = function(seqid, input, output) 
   })
 }
 
-PostServiceProcessor.prototype.process_getPostsBySnsId = function(seqid, input, output) {
-  var args = new PostService_getPostsBySnsId_args();
+PostServiceProcessor.prototype.process_getPostsByUid = function(seqid, input, output) {
+  var args = new PostService_getPostsByUid_args();
   args.read(input);
   input.readMessageEnd();
-  var result = new PostService_getPostsBySnsId_result();
-  this._handler.getPostsBySnsId(args.snsId, function (success) {
+  var result = new PostService_getPostsByUid_result();
+  this._handler.getPostsByUid(args.uid, function (success) {
     result.success = success;
-    output.writeMessageBegin("getPostsBySnsId", Thrift.MessageType.REPLY, seqid);
+    output.writeMessageBegin("getPostsByUid", Thrift.MessageType.REPLY, seqid);
     result.write(output);
     output.writeMessageEnd();
     output.flush();

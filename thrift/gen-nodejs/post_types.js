@@ -7,7 +7,7 @@ var Thrift = require('thrift').Thrift;
 var ttypes = module.exports = {};
 var Post = module.exports.Post = function(args) {
   this.postId = null;
-  this.snsId = null;
+  this.uid = null;
   this.nickName = null;
   this.title = null;
   this.content = null;
@@ -16,8 +16,8 @@ var Post = module.exports.Post = function(args) {
     if (args.postId !== undefined) {
       this.postId = args.postId;
     }
-    if (args.snsId !== undefined) {
-      this.snsId = args.snsId;
+    if (args.uid !== undefined) {
+      this.uid = args.uid;
     }
     if (args.nickName !== undefined) {
       this.nickName = args.nickName;
@@ -56,7 +56,7 @@ Post.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.I32) {
-        this.snsId = input.readI32();
+        this.uid = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -105,9 +105,9 @@ Post.prototype.write = function(output) {
     output.writeI32(this.postId);
     output.writeFieldEnd();
   }
-  if (this.snsId) {
-    output.writeFieldBegin('snsId', Thrift.Type.I32, 2);
-    output.writeI32(this.snsId);
+  if (this.uid) {
+    output.writeFieldBegin('uid', Thrift.Type.I32, 2);
+    output.writeI32(this.uid);
     output.writeFieldEnd();
   }
   if (this.nickName) {
