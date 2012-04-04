@@ -58,14 +58,14 @@ service IminThriftService {
   
   AuthToken login(1: string username, 2: string password),
   
-  AuthToken login(1: string token),
+  AuthToken loginByToken(1: string token),
   
   void logout(1: AuthToken token),
   
   User findUserById(1: i32 id),
   
-  User findUserByName(1: string username),
-  
+  User findUserByName(1: string username)
+  /*
   List<User> findUsers(1: string expr),
   
   List<User> getFollowers(1: User user),
@@ -103,4 +103,5 @@ service IminThriftService {
   void submitAttachment(1: Post post, 2: Attachment attachment),
   
   void deleteAttachment(1: Attachment attachment)
+*/
 }

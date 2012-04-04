@@ -6,22 +6,14 @@
 var Thrift = require('thrift').Thrift;
 var ttypes = module.exports = {};
 var User = module.exports.User = function(args) {
-  this.uid = null;
-  this.nickName = null;
-  this.email = null;
-  this.imgUrl = null;
+  this.id = null;
+  this.username = null;
   if (args) {
-    if (args.uid !== undefined) {
-      this.uid = args.uid;
+    if (args.id !== undefined) {
+      this.id = args.id;
     }
-    if (args.nickName !== undefined) {
-      this.nickName = args.nickName;
-    }
-    if (args.email !== undefined) {
-      this.email = args.email;
-    }
-    if (args.imgUrl !== undefined) {
-      this.imgUrl = args.imgUrl;
+    if (args.username !== undefined) {
+      this.username = args.username;
     }
   }
 };
@@ -41,28 +33,14 @@ User.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.I32) {
-        this.uid = input.readI32();
+        this.id = input.readI32();
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.nickName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.email = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.imgUrl = input.readString();
+        this.username = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -78,24 +56,14 @@ User.prototype.read = function(input) {
 
 User.prototype.write = function(output) {
   output.writeStructBegin('User');
-  if (this.uid) {
-    output.writeFieldBegin('uid', Thrift.Type.I32, 1);
-    output.writeI32(this.uid);
+  if (this.id) {
+    output.writeFieldBegin('id', Thrift.Type.I32, 1);
+    output.writeI32(this.id);
     output.writeFieldEnd();
   }
-  if (this.nickName) {
-    output.writeFieldBegin('nickName', Thrift.Type.STRING, 2);
-    output.writeString(this.nickName);
-    output.writeFieldEnd();
-  }
-  if (this.email) {
-    output.writeFieldBegin('email', Thrift.Type.STRING, 3);
-    output.writeString(this.email);
-    output.writeFieldEnd();
-  }
-  if (this.imgUrl) {
-    output.writeFieldBegin('imgUrl', Thrift.Type.STRING, 4);
-    output.writeString(this.imgUrl);
+  if (this.username) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 2);
+    output.writeString(this.username);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

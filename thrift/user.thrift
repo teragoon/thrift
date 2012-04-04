@@ -8,6 +8,6 @@ struct User {
 service UserService {
   User signup(1: string username, 2: string password),
   void finkout(1: string username),
-  User findUser(1: i32 id),
+  User findUserById(1: i32 id),
   User findUser(1: string username)
 }
