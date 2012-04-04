@@ -27,29 +27,29 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PostService {
+public class UserService {
 
   public interface Iface {
 
-    public void setPost(Post post) throws org.apache.thrift.TException;
+    public void setUser(User user) throws org.apache.thrift.TException;
 
-    public Post getPost(int postId) throws org.apache.thrift.TException;
+    public User getUserByEmail(String email) throws org.apache.thrift.TException;
 
-    public List<Post> getPostsByUid(int uid) throws org.apache.thrift.TException;
+    public User getUserByUid(int uid) throws org.apache.thrift.TException;
 
-    public List<Post> getPostsAll() throws org.apache.thrift.TException;
+    public User getUserByNickName(String nickName) throws org.apache.thrift.TException;
 
   }
 
   public interface AsyncIface {
 
-    public void setPost(Post post, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.setPost_call> resultHandler) throws org.apache.thrift.TException;
+    public void setUser(User user, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.setUser_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getPost(int postId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getPost_call> resultHandler) throws org.apache.thrift.TException;
+    public void getUserByEmail(String email, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserByEmail_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getPostsByUid(int uid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getPostsByUid_call> resultHandler) throws org.apache.thrift.TException;
+    public void getUserByUid(int uid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserByUid_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getPostsAll(org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getPostsAll_call> resultHandler) throws org.apache.thrift.TException;
+    public void getUserByNickName(String nickName, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserByNickName_call> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -73,92 +73,93 @@ public class PostService {
       super(iprot, oprot);
     }
 
-    public void setPost(Post post) throws org.apache.thrift.TException
+    public void setUser(User user) throws org.apache.thrift.TException
     {
-      send_setPost(post);
-      recv_setPost();
+      send_setUser(user);
+      recv_setUser();
     }
 
-    public void send_setPost(Post post) throws org.apache.thrift.TException
+    public void send_setUser(User user) throws org.apache.thrift.TException
     {
-      setPost_args args = new setPost_args();
-      args.setPost(post);
-      sendBase("setPost", args);
+      setUser_args args = new setUser_args();
+      args.setUser(user);
+      sendBase("setUser", args);
     }
 
-    public void recv_setPost() throws org.apache.thrift.TException
+    public void recv_setUser() throws org.apache.thrift.TException
     {
-      setPost_result result = new setPost_result();
-      receiveBase(result, "setPost");
+      setUser_result result = new setUser_result();
+      receiveBase(result, "setUser");
       return;
     }
 
-    public Post getPost(int postId) throws org.apache.thrift.TException
+    public User getUserByEmail(String email) throws org.apache.thrift.TException
     {
-      send_getPost(postId);
-      return recv_getPost();
+      send_getUserByEmail(email);
+      return recv_getUserByEmail();
     }
 
-    public void send_getPost(int postId) throws org.apache.thrift.TException
+    public void send_getUserByEmail(String email) throws org.apache.thrift.TException
     {
-      getPost_args args = new getPost_args();
-      args.setPostId(postId);
-      sendBase("getPost", args);
+      getUserByEmail_args args = new getUserByEmail_args();
+      args.setEmail(email);
+      sendBase("getUserByEmail", args);
     }
 
-    public Post recv_getPost() throws org.apache.thrift.TException
+    public User recv_getUserByEmail() throws org.apache.thrift.TException
     {
-      getPost_result result = new getPost_result();
-      receiveBase(result, "getPost");
+      getUserByEmail_result result = new getUserByEmail_result();
+      receiveBase(result, "getUserByEmail");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPost failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserByEmail failed: unknown result");
     }
 
-    public List<Post> getPostsByUid(int uid) throws org.apache.thrift.TException
+    public User getUserByUid(int uid) throws org.apache.thrift.TException
     {
-      send_getPostsByUid(uid);
-      return recv_getPostsByUid();
+      send_getUserByUid(uid);
+      return recv_getUserByUid();
     }
 
-    public void send_getPostsByUid(int uid) throws org.apache.thrift.TException
+    public void send_getUserByUid(int uid) throws org.apache.thrift.TException
     {
-      getPostsByUid_args args = new getPostsByUid_args();
+      getUserByUid_args args = new getUserByUid_args();
       args.setUid(uid);
-      sendBase("getPostsByUid", args);
+      sendBase("getUserByUid", args);
     }
 
-    public List<Post> recv_getPostsByUid() throws org.apache.thrift.TException
+    public User recv_getUserByUid() throws org.apache.thrift.TException
     {
-      getPostsByUid_result result = new getPostsByUid_result();
-      receiveBase(result, "getPostsByUid");
+      getUserByUid_result result = new getUserByUid_result();
+      receiveBase(result, "getUserByUid");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPostsByUid failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserByUid failed: unknown result");
     }
 
-    public List<Post> getPostsAll() throws org.apache.thrift.TException
+    public User getUserByNickName(String nickName) throws org.apache.thrift.TException
     {
-      send_getPostsAll();
-      return recv_getPostsAll();
+      send_getUserByNickName(nickName);
+      return recv_getUserByNickName();
     }
 
-    public void send_getPostsAll() throws org.apache.thrift.TException
+    public void send_getUserByNickName(String nickName) throws org.apache.thrift.TException
     {
-      getPostsAll_args args = new getPostsAll_args();
-      sendBase("getPostsAll", args);
+      getUserByNickName_args args = new getUserByNickName_args();
+      args.setNickName(nickName);
+      sendBase("getUserByNickName", args);
     }
 
-    public List<Post> recv_getPostsAll() throws org.apache.thrift.TException
+    public User recv_getUserByNickName() throws org.apache.thrift.TException
     {
-      getPostsAll_result result = new getPostsAll_result();
-      receiveBase(result, "getPostsAll");
+      getUserByNickName_result result = new getUserByNickName_result();
+      receiveBase(result, "getUserByNickName");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPostsAll failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserByNickName failed: unknown result");
     }
 
   }
@@ -179,24 +180,24 @@ public class PostService {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void setPost(Post post, org.apache.thrift.async.AsyncMethodCallback<setPost_call> resultHandler) throws org.apache.thrift.TException {
+    public void setUser(User user, org.apache.thrift.async.AsyncMethodCallback<setUser_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      setPost_call method_call = new setPost_call(post, resultHandler, this, ___protocolFactory, ___transport);
+      setUser_call method_call = new setUser_call(user, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class setPost_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private Post post;
-      public setPost_call(Post post, org.apache.thrift.async.AsyncMethodCallback<setPost_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class setUser_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private User user;
+      public setUser_call(User user, org.apache.thrift.async.AsyncMethodCallback<setUser_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.post = post;
+        this.user = user;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("setPost", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        setPost_args args = new setPost_args();
-        args.setPost(post);
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("setUser", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        setUser_args args = new setUser_args();
+        args.setUser(user);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -207,100 +208,103 @@ public class PostService {
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        (new Client(prot)).recv_setPost();
+        (new Client(prot)).recv_setUser();
       }
     }
 
-    public void getPost(int postId, org.apache.thrift.async.AsyncMethodCallback<getPost_call> resultHandler) throws org.apache.thrift.TException {
+    public void getUserByEmail(String email, org.apache.thrift.async.AsyncMethodCallback<getUserByEmail_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      getPost_call method_call = new getPost_call(postId, resultHandler, this, ___protocolFactory, ___transport);
+      getUserByEmail_call method_call = new getUserByEmail_call(email, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class getPost_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private int postId;
-      public getPost_call(int postId, org.apache.thrift.async.AsyncMethodCallback<getPost_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class getUserByEmail_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private String email;
+      public getUserByEmail_call(String email, org.apache.thrift.async.AsyncMethodCallback<getUserByEmail_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.postId = postId;
+        this.email = email;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getPost", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        getPost_args args = new getPost_args();
-        args.setPostId(postId);
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUserByEmail", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        getUserByEmail_args args = new getUserByEmail_args();
+        args.setEmail(email);
         args.write(prot);
         prot.writeMessageEnd();
       }
 
-      public Post getResult() throws org.apache.thrift.TException {
+      public User getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_getPost();
+        return (new Client(prot)).recv_getUserByEmail();
       }
     }
 
-    public void getPostsByUid(int uid, org.apache.thrift.async.AsyncMethodCallback<getPostsByUid_call> resultHandler) throws org.apache.thrift.TException {
+    public void getUserByUid(int uid, org.apache.thrift.async.AsyncMethodCallback<getUserByUid_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      getPostsByUid_call method_call = new getPostsByUid_call(uid, resultHandler, this, ___protocolFactory, ___transport);
+      getUserByUid_call method_call = new getUserByUid_call(uid, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class getPostsByUid_call extends org.apache.thrift.async.TAsyncMethodCall {
+    public static class getUserByUid_call extends org.apache.thrift.async.TAsyncMethodCall {
       private int uid;
-      public getPostsByUid_call(int uid, org.apache.thrift.async.AsyncMethodCallback<getPostsByUid_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public getUserByUid_call(int uid, org.apache.thrift.async.AsyncMethodCallback<getUserByUid_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.uid = uid;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getPostsByUid", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        getPostsByUid_args args = new getPostsByUid_args();
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUserByUid", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        getUserByUid_args args = new getUserByUid_args();
         args.setUid(uid);
         args.write(prot);
         prot.writeMessageEnd();
       }
 
-      public List<Post> getResult() throws org.apache.thrift.TException {
+      public User getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_getPostsByUid();
+        return (new Client(prot)).recv_getUserByUid();
       }
     }
 
-    public void getPostsAll(org.apache.thrift.async.AsyncMethodCallback<getPostsAll_call> resultHandler) throws org.apache.thrift.TException {
+    public void getUserByNickName(String nickName, org.apache.thrift.async.AsyncMethodCallback<getUserByNickName_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      getPostsAll_call method_call = new getPostsAll_call(resultHandler, this, ___protocolFactory, ___transport);
+      getUserByNickName_call method_call = new getUserByNickName_call(nickName, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class getPostsAll_call extends org.apache.thrift.async.TAsyncMethodCall {
-      public getPostsAll_call(org.apache.thrift.async.AsyncMethodCallback<getPostsAll_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class getUserByNickName_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private String nickName;
+      public getUserByNickName_call(String nickName, org.apache.thrift.async.AsyncMethodCallback<getUserByNickName_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
+        this.nickName = nickName;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getPostsAll", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        getPostsAll_args args = new getPostsAll_args();
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUserByNickName", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        getUserByNickName_args args = new getUserByNickName_args();
+        args.setNickName(nickName);
         args.write(prot);
         prot.writeMessageEnd();
       }
 
-      public List<Post> getResult() throws org.apache.thrift.TException {
+      public User getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_getPostsAll();
+        return (new Client(prot)).recv_getUserByNickName();
       }
     }
 
@@ -317,95 +321,95 @@ public class PostService {
     }
 
     private static <I extends Iface> Map<String,  org.apache.thrift.ProcessFunction<I, ? extends  org.apache.thrift.TBase>> getProcessMap(Map<String,  org.apache.thrift.ProcessFunction<I, ? extends  org.apache.thrift.TBase>> processMap) {
-      processMap.put("setPost", new setPost());
-      processMap.put("getPost", new getPost());
-      processMap.put("getPostsByUid", new getPostsByUid());
-      processMap.put("getPostsAll", new getPostsAll());
+      processMap.put("setUser", new setUser());
+      processMap.put("getUserByEmail", new getUserByEmail());
+      processMap.put("getUserByUid", new getUserByUid());
+      processMap.put("getUserByNickName", new getUserByNickName());
       return processMap;
     }
 
-    private static class setPost<I extends Iface> extends org.apache.thrift.ProcessFunction<I, setPost_args> {
-      public setPost() {
-        super("setPost");
+    private static class setUser<I extends Iface> extends org.apache.thrift.ProcessFunction<I, setUser_args> {
+      public setUser() {
+        super("setUser");
       }
 
-      protected setPost_args getEmptyArgsInstance() {
-        return new setPost_args();
+      protected setUser_args getEmptyArgsInstance() {
+        return new setUser_args();
       }
 
-      protected setPost_result getResult(I iface, setPost_args args) throws org.apache.thrift.TException {
-        setPost_result result = new setPost_result();
-        iface.setPost(args.post);
+      protected setUser_result getResult(I iface, setUser_args args) throws org.apache.thrift.TException {
+        setUser_result result = new setUser_result();
+        iface.setUser(args.user);
         return result;
       }
     }
 
-    private static class getPost<I extends Iface> extends org.apache.thrift.ProcessFunction<I, getPost_args> {
-      public getPost() {
-        super("getPost");
+    private static class getUserByEmail<I extends Iface> extends org.apache.thrift.ProcessFunction<I, getUserByEmail_args> {
+      public getUserByEmail() {
+        super("getUserByEmail");
       }
 
-      protected getPost_args getEmptyArgsInstance() {
-        return new getPost_args();
+      protected getUserByEmail_args getEmptyArgsInstance() {
+        return new getUserByEmail_args();
       }
 
-      protected getPost_result getResult(I iface, getPost_args args) throws org.apache.thrift.TException {
-        getPost_result result = new getPost_result();
-        result.success = iface.getPost(args.postId);
+      protected getUserByEmail_result getResult(I iface, getUserByEmail_args args) throws org.apache.thrift.TException {
+        getUserByEmail_result result = new getUserByEmail_result();
+        result.success = iface.getUserByEmail(args.email);
         return result;
       }
     }
 
-    private static class getPostsByUid<I extends Iface> extends org.apache.thrift.ProcessFunction<I, getPostsByUid_args> {
-      public getPostsByUid() {
-        super("getPostsByUid");
+    private static class getUserByUid<I extends Iface> extends org.apache.thrift.ProcessFunction<I, getUserByUid_args> {
+      public getUserByUid() {
+        super("getUserByUid");
       }
 
-      protected getPostsByUid_args getEmptyArgsInstance() {
-        return new getPostsByUid_args();
+      protected getUserByUid_args getEmptyArgsInstance() {
+        return new getUserByUid_args();
       }
 
-      protected getPostsByUid_result getResult(I iface, getPostsByUid_args args) throws org.apache.thrift.TException {
-        getPostsByUid_result result = new getPostsByUid_result();
-        result.success = iface.getPostsByUid(args.uid);
+      protected getUserByUid_result getResult(I iface, getUserByUid_args args) throws org.apache.thrift.TException {
+        getUserByUid_result result = new getUserByUid_result();
+        result.success = iface.getUserByUid(args.uid);
         return result;
       }
     }
 
-    private static class getPostsAll<I extends Iface> extends org.apache.thrift.ProcessFunction<I, getPostsAll_args> {
-      public getPostsAll() {
-        super("getPostsAll");
+    private static class getUserByNickName<I extends Iface> extends org.apache.thrift.ProcessFunction<I, getUserByNickName_args> {
+      public getUserByNickName() {
+        super("getUserByNickName");
       }
 
-      protected getPostsAll_args getEmptyArgsInstance() {
-        return new getPostsAll_args();
+      protected getUserByNickName_args getEmptyArgsInstance() {
+        return new getUserByNickName_args();
       }
 
-      protected getPostsAll_result getResult(I iface, getPostsAll_args args) throws org.apache.thrift.TException {
-        getPostsAll_result result = new getPostsAll_result();
-        result.success = iface.getPostsAll();
+      protected getUserByNickName_result getResult(I iface, getUserByNickName_args args) throws org.apache.thrift.TException {
+        getUserByNickName_result result = new getUserByNickName_result();
+        result.success = iface.getUserByNickName(args.nickName);
         return result;
       }
     }
 
   }
 
-  public static class setPost_args implements org.apache.thrift.TBase<setPost_args, setPost_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("setPost_args");
+  public static class setUser_args implements org.apache.thrift.TBase<setUser_args, setUser_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("setUser_args");
 
-    private static final org.apache.thrift.protocol.TField POST_FIELD_DESC = new org.apache.thrift.protocol.TField("post", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+    private static final org.apache.thrift.protocol.TField USER_FIELD_DESC = new org.apache.thrift.protocol.TField("user", org.apache.thrift.protocol.TType.STRUCT, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new setPost_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new setPost_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new setUser_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new setUser_argsTupleSchemeFactory());
     }
 
-    public Post post; // required
+    public User user; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      POST((short)1, "post");
+      USER((short)1, "user");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -420,8 +424,8 @@ public class PostService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // POST
-            return POST;
+          case 1: // USER
+            return USER;
           default:
             return null;
         }
@@ -465,71 +469,71 @@ public class PostService {
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.POST, new org.apache.thrift.meta_data.FieldMetaData("post", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Post.class)));
+      tmpMap.put(_Fields.USER, new org.apache.thrift.meta_data.FieldMetaData("user", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, User.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(setPost_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(setUser_args.class, metaDataMap);
     }
 
-    public setPost_args() {
+    public setUser_args() {
     }
 
-    public setPost_args(
-      Post post)
+    public setUser_args(
+      User user)
     {
       this();
-      this.post = post;
+      this.user = user;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public setPost_args(setPost_args other) {
-      if (other.isSetPost()) {
-        this.post = new Post(other.post);
+    public setUser_args(setUser_args other) {
+      if (other.isSetUser()) {
+        this.user = new User(other.user);
       }
     }
 
-    public setPost_args deepCopy() {
-      return new setPost_args(this);
+    public setUser_args deepCopy() {
+      return new setUser_args(this);
     }
 
     @Override
     public void clear() {
-      this.post = null;
+      this.user = null;
     }
 
-    public Post getPost() {
-      return this.post;
+    public User getUser() {
+      return this.user;
     }
 
-    public setPost_args setPost(Post post) {
-      this.post = post;
+    public setUser_args setUser(User user) {
+      this.user = user;
       return this;
     }
 
-    public void unsetPost() {
-      this.post = null;
+    public void unsetUser() {
+      this.user = null;
     }
 
-    /** Returns true if field post is set (has been assigned a value) and false otherwise */
-    public boolean isSetPost() {
-      return this.post != null;
+    /** Returns true if field user is set (has been assigned a value) and false otherwise */
+    public boolean isSetUser() {
+      return this.user != null;
     }
 
-    public void setPostIsSet(boolean value) {
+    public void setUserIsSet(boolean value) {
       if (!value) {
-        this.post = null;
+        this.user = null;
       }
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case POST:
+      case USER:
         if (value == null) {
-          unsetPost();
+          unsetUser();
         } else {
-          setPost((Post)value);
+          setUser((User)value);
         }
         break;
 
@@ -538,8 +542,8 @@ public class PostService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case POST:
-        return getPost();
+      case USER:
+        return getUser();
 
       }
       throw new IllegalStateException();
@@ -552,8 +556,8 @@ public class PostService {
       }
 
       switch (field) {
-      case POST:
-        return isSetPost();
+      case USER:
+        return isSetUser();
       }
       throw new IllegalStateException();
     }
@@ -562,21 +566,21 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof setPost_args)
-        return this.equals((setPost_args)that);
+      if (that instanceof setUser_args)
+        return this.equals((setUser_args)that);
       return false;
     }
 
-    public boolean equals(setPost_args that) {
+    public boolean equals(setUser_args that) {
       if (that == null)
         return false;
 
-      boolean this_present_post = true && this.isSetPost();
-      boolean that_present_post = true && that.isSetPost();
-      if (this_present_post || that_present_post) {
-        if (!(this_present_post && that_present_post))
+      boolean this_present_user = true && this.isSetUser();
+      boolean that_present_user = true && that.isSetUser();
+      if (this_present_user || that_present_user) {
+        if (!(this_present_user && that_present_user))
           return false;
-        if (!this.post.equals(that.post))
+        if (!this.user.equals(that.user))
           return false;
       }
 
@@ -588,20 +592,20 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(setPost_args other) {
+    public int compareTo(setUser_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      setPost_args typedOther = (setPost_args)other;
+      setUser_args typedOther = (setUser_args)other;
 
-      lastComparison = Boolean.valueOf(isSetPost()).compareTo(typedOther.isSetPost());
+      lastComparison = Boolean.valueOf(isSetUser()).compareTo(typedOther.isSetUser());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetPost()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.post, typedOther.post);
+      if (isSetUser()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.user, typedOther.user);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -623,14 +627,14 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("setPost_args(");
+      StringBuilder sb = new StringBuilder("setUser_args(");
       boolean first = true;
 
-      sb.append("post:");
-      if (this.post == null) {
+      sb.append("user:");
+      if (this.user == null) {
         sb.append("null");
       } else {
-        sb.append(this.post);
+        sb.append(this.user);
       }
       first = false;
       sb.append(")");
@@ -657,15 +661,15 @@ public class PostService {
       }
     }
 
-    private static class setPost_argsStandardSchemeFactory implements SchemeFactory {
-      public setPost_argsStandardScheme getScheme() {
-        return new setPost_argsStandardScheme();
+    private static class setUser_argsStandardSchemeFactory implements SchemeFactory {
+      public setUser_argsStandardScheme getScheme() {
+        return new setUser_argsStandardScheme();
       }
     }
 
-    private static class setPost_argsStandardScheme extends StandardScheme<setPost_args> {
+    private static class setUser_argsStandardScheme extends StandardScheme<setUser_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, setPost_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, setUser_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -675,11 +679,11 @@ public class PostService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // POST
+            case 1: // USER
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.post = new Post();
-                struct.post.read(iprot);
-                struct.setPostIsSet(true);
+                struct.user = new User();
+                struct.user.read(iprot);
+                struct.setUserIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -695,13 +699,13 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, setPost_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, setUser_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.post != null) {
-          oprot.writeFieldBegin(POST_FIELD_DESC);
-          struct.post.write(oprot);
+        if (struct.user != null) {
+          oprot.writeFieldBegin(USER_FIELD_DESC);
+          struct.user.write(oprot);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -710,49 +714,49 @@ public class PostService {
 
     }
 
-    private static class setPost_argsTupleSchemeFactory implements SchemeFactory {
-      public setPost_argsTupleScheme getScheme() {
-        return new setPost_argsTupleScheme();
+    private static class setUser_argsTupleSchemeFactory implements SchemeFactory {
+      public setUser_argsTupleScheme getScheme() {
+        return new setUser_argsTupleScheme();
       }
     }
 
-    private static class setPost_argsTupleScheme extends TupleScheme<setPost_args> {
+    private static class setUser_argsTupleScheme extends TupleScheme<setUser_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, setPost_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, setUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetPost()) {
+        if (struct.isSetUser()) {
           optionals.set(0);
         }
         oprot.writeBitSet(optionals, 1);
-        if (struct.isSetPost()) {
-          struct.post.write(oprot);
+        if (struct.isSetUser()) {
+          struct.user.write(oprot);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, setPost_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, setUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.post = new Post();
-          struct.post.read(iprot);
-          struct.setPostIsSet(true);
+          struct.user = new User();
+          struct.user.read(iprot);
+          struct.setUserIsSet(true);
         }
       }
     }
 
   }
 
-  public static class setPost_result implements org.apache.thrift.TBase<setPost_result, setPost_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("setPost_result");
+  public static class setUser_result implements org.apache.thrift.TBase<setUser_result, setUser_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("setUser_result");
 
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new setPost_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new setPost_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new setUser_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new setUser_resultTupleSchemeFactory());
     }
 
 
@@ -815,20 +819,20 @@ public class PostService {
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(setPost_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(setUser_result.class, metaDataMap);
     }
 
-    public setPost_result() {
+    public setUser_result() {
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public setPost_result(setPost_result other) {
+    public setUser_result(setUser_result other) {
     }
 
-    public setPost_result deepCopy() {
-      return new setPost_result(this);
+    public setUser_result deepCopy() {
+      return new setUser_result(this);
     }
 
     @Override
@@ -861,12 +865,12 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof setPost_result)
-        return this.equals((setPost_result)that);
+      if (that instanceof setUser_result)
+        return this.equals((setUser_result)that);
       return false;
     }
 
-    public boolean equals(setPost_result that) {
+    public boolean equals(setUser_result that) {
       if (that == null)
         return false;
 
@@ -878,13 +882,13 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(setPost_result other) {
+    public int compareTo(setUser_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      setPost_result typedOther = (setPost_result)other;
+      setUser_result typedOther = (setUser_result)other;
 
       return 0;
     }
@@ -903,7 +907,7 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("setPost_result(");
+      StringBuilder sb = new StringBuilder("setUser_result(");
       boolean first = true;
 
       sb.append(")");
@@ -930,15 +934,15 @@ public class PostService {
       }
     }
 
-    private static class setPost_resultStandardSchemeFactory implements SchemeFactory {
-      public setPost_resultStandardScheme getScheme() {
-        return new setPost_resultStandardScheme();
+    private static class setUser_resultStandardSchemeFactory implements SchemeFactory {
+      public setUser_resultStandardScheme getScheme() {
+        return new setUser_resultStandardScheme();
       }
     }
 
-    private static class setPost_resultStandardScheme extends StandardScheme<setPost_result> {
+    private static class setUser_resultStandardScheme extends StandardScheme<setUser_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, setPost_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, setUser_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -959,7 +963,7 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, setPost_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, setUser_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -969,43 +973,43 @@ public class PostService {
 
     }
 
-    private static class setPost_resultTupleSchemeFactory implements SchemeFactory {
-      public setPost_resultTupleScheme getScheme() {
-        return new setPost_resultTupleScheme();
+    private static class setUser_resultTupleSchemeFactory implements SchemeFactory {
+      public setUser_resultTupleScheme getScheme() {
+        return new setUser_resultTupleScheme();
       }
     }
 
-    private static class setPost_resultTupleScheme extends TupleScheme<setPost_result> {
+    private static class setUser_resultTupleScheme extends TupleScheme<setUser_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, setPost_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, setUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, setPost_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, setUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
       }
     }
 
   }
 
-  public static class getPost_args implements org.apache.thrift.TBase<getPost_args, getPost_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPost_args");
+  public static class getUserByEmail_args implements org.apache.thrift.TBase<getUserByEmail_args, getUserByEmail_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getUserByEmail_args");
 
-    private static final org.apache.thrift.protocol.TField POST_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("postId", org.apache.thrift.protocol.TType.I32, (short)1);
+    private static final org.apache.thrift.protocol.TField EMAIL_FIELD_DESC = new org.apache.thrift.protocol.TField("email", org.apache.thrift.protocol.TType.STRING, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new getPost_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new getPost_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new getUserByEmail_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new getUserByEmail_argsTupleSchemeFactory());
     }
 
-    public int postId; // required
+    public String email; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      POST_ID((short)1, "postId");
+      EMAIL((short)1, "email");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -1020,8 +1024,8 @@ public class PostService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // POST_ID
-            return POST_ID;
+          case 1: // EMAIL
+            return EMAIL;
           default:
             return null;
         }
@@ -1062,77 +1066,74 @@ public class PostService {
     }
 
     // isset id assignments
-    private static final int __POSTID_ISSET_ID = 0;
-    private BitSet __isset_bit_vector = new BitSet(1);
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.POST_ID, new org.apache.thrift.meta_data.FieldMetaData("postId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      tmpMap.put(_Fields.EMAIL, new org.apache.thrift.meta_data.FieldMetaData("email", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPost_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getUserByEmail_args.class, metaDataMap);
     }
 
-    public getPost_args() {
+    public getUserByEmail_args() {
     }
 
-    public getPost_args(
-      int postId)
+    public getUserByEmail_args(
+      String email)
     {
       this();
-      this.postId = postId;
-      setPostIdIsSet(true);
+      this.email = email;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public getPost_args(getPost_args other) {
-      __isset_bit_vector.clear();
-      __isset_bit_vector.or(other.__isset_bit_vector);
-      this.postId = other.postId;
+    public getUserByEmail_args(getUserByEmail_args other) {
+      if (other.isSetEmail()) {
+        this.email = other.email;
+      }
     }
 
-    public getPost_args deepCopy() {
-      return new getPost_args(this);
+    public getUserByEmail_args deepCopy() {
+      return new getUserByEmail_args(this);
     }
 
     @Override
     public void clear() {
-      setPostIdIsSet(false);
-      this.postId = 0;
+      this.email = null;
     }
 
-    public int getPostId() {
-      return this.postId;
+    public String getEmail() {
+      return this.email;
     }
 
-    public getPost_args setPostId(int postId) {
-      this.postId = postId;
-      setPostIdIsSet(true);
+    public getUserByEmail_args setEmail(String email) {
+      this.email = email;
       return this;
     }
 
-    public void unsetPostId() {
-      __isset_bit_vector.clear(__POSTID_ISSET_ID);
+    public void unsetEmail() {
+      this.email = null;
     }
 
-    /** Returns true if field postId is set (has been assigned a value) and false otherwise */
-    public boolean isSetPostId() {
-      return __isset_bit_vector.get(__POSTID_ISSET_ID);
+    /** Returns true if field email is set (has been assigned a value) and false otherwise */
+    public boolean isSetEmail() {
+      return this.email != null;
     }
 
-    public void setPostIdIsSet(boolean value) {
-      __isset_bit_vector.set(__POSTID_ISSET_ID, value);
+    public void setEmailIsSet(boolean value) {
+      if (!value) {
+        this.email = null;
+      }
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case POST_ID:
+      case EMAIL:
         if (value == null) {
-          unsetPostId();
+          unsetEmail();
         } else {
-          setPostId((Integer)value);
+          setEmail((String)value);
         }
         break;
 
@@ -1141,8 +1142,8 @@ public class PostService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case POST_ID:
-        return Integer.valueOf(getPostId());
+      case EMAIL:
+        return getEmail();
 
       }
       throw new IllegalStateException();
@@ -1155,8 +1156,8 @@ public class PostService {
       }
 
       switch (field) {
-      case POST_ID:
-        return isSetPostId();
+      case EMAIL:
+        return isSetEmail();
       }
       throw new IllegalStateException();
     }
@@ -1165,21 +1166,21 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof getPost_args)
-        return this.equals((getPost_args)that);
+      if (that instanceof getUserByEmail_args)
+        return this.equals((getUserByEmail_args)that);
       return false;
     }
 
-    public boolean equals(getPost_args that) {
+    public boolean equals(getUserByEmail_args that) {
       if (that == null)
         return false;
 
-      boolean this_present_postId = true;
-      boolean that_present_postId = true;
-      if (this_present_postId || that_present_postId) {
-        if (!(this_present_postId && that_present_postId))
+      boolean this_present_email = true && this.isSetEmail();
+      boolean that_present_email = true && that.isSetEmail();
+      if (this_present_email || that_present_email) {
+        if (!(this_present_email && that_present_email))
           return false;
-        if (this.postId != that.postId)
+        if (!this.email.equals(that.email))
           return false;
       }
 
@@ -1191,20 +1192,20 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(getPost_args other) {
+    public int compareTo(getUserByEmail_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      getPost_args typedOther = (getPost_args)other;
+      getUserByEmail_args typedOther = (getUserByEmail_args)other;
 
-      lastComparison = Boolean.valueOf(isSetPostId()).compareTo(typedOther.isSetPostId());
+      lastComparison = Boolean.valueOf(isSetEmail()).compareTo(typedOther.isSetEmail());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetPostId()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.postId, typedOther.postId);
+      if (isSetEmail()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.email, typedOther.email);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -1226,11 +1227,15 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("getPost_args(");
+      StringBuilder sb = new StringBuilder("getUserByEmail_args(");
       boolean first = true;
 
-      sb.append("postId:");
-      sb.append(this.postId);
+      sb.append("email:");
+      if (this.email == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.email);
+      }
       first = false;
       sb.append(")");
       return sb.toString();
@@ -1250,23 +1255,21 @@ public class PostService {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
-        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
-        __isset_bit_vector = new BitSet(1);
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
 
-    private static class getPost_argsStandardSchemeFactory implements SchemeFactory {
-      public getPost_argsStandardScheme getScheme() {
-        return new getPost_argsStandardScheme();
+    private static class getUserByEmail_argsStandardSchemeFactory implements SchemeFactory {
+      public getUserByEmail_argsStandardScheme getScheme() {
+        return new getUserByEmail_argsStandardScheme();
       }
     }
 
-    private static class getPost_argsStandardScheme extends StandardScheme<getPost_args> {
+    private static class getUserByEmail_argsStandardScheme extends StandardScheme<getUserByEmail_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPost_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserByEmail_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1276,10 +1279,10 @@ public class PostService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // POST_ID
-              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-                struct.postId = iprot.readI32();
-                struct.setPostIdIsSet(true);
+            case 1: // EMAIL
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.email = iprot.readString();
+                struct.setEmailIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -1295,65 +1298,67 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPost_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserByEmail_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        oprot.writeFieldBegin(POST_ID_FIELD_DESC);
-        oprot.writeI32(struct.postId);
-        oprot.writeFieldEnd();
+        if (struct.email != null) {
+          oprot.writeFieldBegin(EMAIL_FIELD_DESC);
+          oprot.writeString(struct.email);
+          oprot.writeFieldEnd();
+        }
         oprot.writeFieldStop();
         oprot.writeStructEnd();
       }
 
     }
 
-    private static class getPost_argsTupleSchemeFactory implements SchemeFactory {
-      public getPost_argsTupleScheme getScheme() {
-        return new getPost_argsTupleScheme();
+    private static class getUserByEmail_argsTupleSchemeFactory implements SchemeFactory {
+      public getUserByEmail_argsTupleScheme getScheme() {
+        return new getUserByEmail_argsTupleScheme();
       }
     }
 
-    private static class getPost_argsTupleScheme extends TupleScheme<getPost_args> {
+    private static class getUserByEmail_argsTupleScheme extends TupleScheme<getUserByEmail_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getPost_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserByEmail_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetPostId()) {
+        if (struct.isSetEmail()) {
           optionals.set(0);
         }
         oprot.writeBitSet(optionals, 1);
-        if (struct.isSetPostId()) {
-          oprot.writeI32(struct.postId);
+        if (struct.isSetEmail()) {
+          oprot.writeString(struct.email);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getPost_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserByEmail_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.postId = iprot.readI32();
-          struct.setPostIdIsSet(true);
+          struct.email = iprot.readString();
+          struct.setEmailIsSet(true);
         }
       }
     }
 
   }
 
-  public static class getPost_result implements org.apache.thrift.TBase<getPost_result, getPost_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPost_result");
+  public static class getUserByEmail_result implements org.apache.thrift.TBase<getUserByEmail_result, getUserByEmail_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getUserByEmail_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRUCT, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new getPost_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new getPost_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new getUserByEmail_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new getUserByEmail_resultTupleSchemeFactory());
     }
 
-    public Post success; // required
+    public User success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -1418,16 +1423,16 @@ public class PostService {
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Post.class)));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, User.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPost_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getUserByEmail_result.class, metaDataMap);
     }
 
-    public getPost_result() {
+    public getUserByEmail_result() {
     }
 
-    public getPost_result(
-      Post success)
+    public getUserByEmail_result(
+      User success)
     {
       this();
       this.success = success;
@@ -1436,14 +1441,14 @@ public class PostService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public getPost_result(getPost_result other) {
+    public getUserByEmail_result(getUserByEmail_result other) {
       if (other.isSetSuccess()) {
-        this.success = new Post(other.success);
+        this.success = new User(other.success);
       }
     }
 
-    public getPost_result deepCopy() {
-      return new getPost_result(this);
+    public getUserByEmail_result deepCopy() {
+      return new getUserByEmail_result(this);
     }
 
     @Override
@@ -1451,11 +1456,11 @@ public class PostService {
       this.success = null;
     }
 
-    public Post getSuccess() {
+    public User getSuccess() {
       return this.success;
     }
 
-    public getPost_result setSuccess(Post success) {
+    public getUserByEmail_result setSuccess(User success) {
       this.success = success;
       return this;
     }
@@ -1481,7 +1486,7 @@ public class PostService {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((Post)value);
+          setSuccess((User)value);
         }
         break;
 
@@ -1514,12 +1519,12 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof getPost_result)
-        return this.equals((getPost_result)that);
+      if (that instanceof getUserByEmail_result)
+        return this.equals((getUserByEmail_result)that);
       return false;
     }
 
-    public boolean equals(getPost_result that) {
+    public boolean equals(getUserByEmail_result that) {
       if (that == null)
         return false;
 
@@ -1540,13 +1545,13 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(getPost_result other) {
+    public int compareTo(getUserByEmail_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      getPost_result typedOther = (getPost_result)other;
+      getUserByEmail_result typedOther = (getUserByEmail_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -1575,7 +1580,7 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("getPost_result(");
+      StringBuilder sb = new StringBuilder("getUserByEmail_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -1609,15 +1614,15 @@ public class PostService {
       }
     }
 
-    private static class getPost_resultStandardSchemeFactory implements SchemeFactory {
-      public getPost_resultStandardScheme getScheme() {
-        return new getPost_resultStandardScheme();
+    private static class getUserByEmail_resultStandardSchemeFactory implements SchemeFactory {
+      public getUserByEmail_resultStandardScheme getScheme() {
+        return new getUserByEmail_resultStandardScheme();
       }
     }
 
-    private static class getPost_resultStandardScheme extends StandardScheme<getPost_result> {
+    private static class getUserByEmail_resultStandardScheme extends StandardScheme<getUserByEmail_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPost_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserByEmail_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1629,7 +1634,7 @@ public class PostService {
           switch (schemeField.id) {
             case 0: // SUCCESS
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.success = new Post();
+                struct.success = new User();
                 struct.success.read(iprot);
                 struct.setSuccessIsSet(true);
               } else { 
@@ -1647,7 +1652,7 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPost_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserByEmail_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1662,16 +1667,16 @@ public class PostService {
 
     }
 
-    private static class getPost_resultTupleSchemeFactory implements SchemeFactory {
-      public getPost_resultTupleScheme getScheme() {
-        return new getPost_resultTupleScheme();
+    private static class getUserByEmail_resultTupleSchemeFactory implements SchemeFactory {
+      public getUserByEmail_resultTupleScheme getScheme() {
+        return new getUserByEmail_resultTupleScheme();
       }
     }
 
-    private static class getPost_resultTupleScheme extends TupleScheme<getPost_result> {
+    private static class getUserByEmail_resultTupleScheme extends TupleScheme<getUserByEmail_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getPost_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserByEmail_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1684,11 +1689,11 @@ public class PostService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getPost_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserByEmail_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.success = new Post();
+          struct.success = new User();
           struct.success.read(iprot);
           struct.setSuccessIsSet(true);
         }
@@ -1697,15 +1702,15 @@ public class PostService {
 
   }
 
-  public static class getPostsByUid_args implements org.apache.thrift.TBase<getPostsByUid_args, getPostsByUid_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPostsByUid_args");
+  public static class getUserByUid_args implements org.apache.thrift.TBase<getUserByUid_args, getUserByUid_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getUserByUid_args");
 
     private static final org.apache.thrift.protocol.TField UID_FIELD_DESC = new org.apache.thrift.protocol.TField("uid", org.apache.thrift.protocol.TType.I32, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new getPostsByUid_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new getPostsByUid_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new getUserByUid_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new getUserByUid_argsTupleSchemeFactory());
     }
 
     public int uid; // required
@@ -1777,13 +1782,13 @@ public class PostService {
       tmpMap.put(_Fields.UID, new org.apache.thrift.meta_data.FieldMetaData("uid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPostsByUid_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getUserByUid_args.class, metaDataMap);
     }
 
-    public getPostsByUid_args() {
+    public getUserByUid_args() {
     }
 
-    public getPostsByUid_args(
+    public getUserByUid_args(
       int uid)
     {
       this();
@@ -1794,14 +1799,14 @@ public class PostService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public getPostsByUid_args(getPostsByUid_args other) {
+    public getUserByUid_args(getUserByUid_args other) {
       __isset_bit_vector.clear();
       __isset_bit_vector.or(other.__isset_bit_vector);
       this.uid = other.uid;
     }
 
-    public getPostsByUid_args deepCopy() {
-      return new getPostsByUid_args(this);
+    public getUserByUid_args deepCopy() {
+      return new getUserByUid_args(this);
     }
 
     @Override
@@ -1814,7 +1819,7 @@ public class PostService {
       return this.uid;
     }
 
-    public getPostsByUid_args setUid(int uid) {
+    public getUserByUid_args setUid(int uid) {
       this.uid = uid;
       setUidIsSet(true);
       return this;
@@ -1872,12 +1877,12 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof getPostsByUid_args)
-        return this.equals((getPostsByUid_args)that);
+      if (that instanceof getUserByUid_args)
+        return this.equals((getUserByUid_args)that);
       return false;
     }
 
-    public boolean equals(getPostsByUid_args that) {
+    public boolean equals(getUserByUid_args that) {
       if (that == null)
         return false;
 
@@ -1898,13 +1903,13 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(getPostsByUid_args other) {
+    public int compareTo(getUserByUid_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      getPostsByUid_args typedOther = (getPostsByUid_args)other;
+      getUserByUid_args typedOther = (getUserByUid_args)other;
 
       lastComparison = Boolean.valueOf(isSetUid()).compareTo(typedOther.isSetUid());
       if (lastComparison != 0) {
@@ -1933,7 +1938,7 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("getPostsByUid_args(");
+      StringBuilder sb = new StringBuilder("getUserByUid_args(");
       boolean first = true;
 
       sb.append("uid:");
@@ -1965,15 +1970,15 @@ public class PostService {
       }
     }
 
-    private static class getPostsByUid_argsStandardSchemeFactory implements SchemeFactory {
-      public getPostsByUid_argsStandardScheme getScheme() {
-        return new getPostsByUid_argsStandardScheme();
+    private static class getUserByUid_argsStandardSchemeFactory implements SchemeFactory {
+      public getUserByUid_argsStandardScheme getScheme() {
+        return new getUserByUid_argsStandardScheme();
       }
     }
 
-    private static class getPostsByUid_argsStandardScheme extends StandardScheme<getPostsByUid_args> {
+    private static class getUserByUid_argsStandardScheme extends StandardScheme<getUserByUid_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPostsByUid_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserByUid_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2002,7 +2007,7 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPostsByUid_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserByUid_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2015,16 +2020,16 @@ public class PostService {
 
     }
 
-    private static class getPostsByUid_argsTupleSchemeFactory implements SchemeFactory {
-      public getPostsByUid_argsTupleScheme getScheme() {
-        return new getPostsByUid_argsTupleScheme();
+    private static class getUserByUid_argsTupleSchemeFactory implements SchemeFactory {
+      public getUserByUid_argsTupleScheme getScheme() {
+        return new getUserByUid_argsTupleScheme();
       }
     }
 
-    private static class getPostsByUid_argsTupleScheme extends TupleScheme<getPostsByUid_args> {
+    private static class getUserByUid_argsTupleScheme extends TupleScheme<getUserByUid_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getPostsByUid_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserByUid_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUid()) {
@@ -2037,7 +2042,7 @@ public class PostService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getPostsByUid_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserByUid_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -2049,18 +2054,18 @@ public class PostService {
 
   }
 
-  public static class getPostsByUid_result implements org.apache.thrift.TBase<getPostsByUid_result, getPostsByUid_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPostsByUid_result");
+  public static class getUserByUid_result implements org.apache.thrift.TBase<getUserByUid_result, getUserByUid_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getUserByUid_result");
 
-    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.LIST, (short)0);
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRUCT, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new getPostsByUid_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new getPostsByUid_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new getUserByUid_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new getUserByUid_resultTupleSchemeFactory());
     }
 
-    public List<Post> success; // required
+    public User success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -2125,17 +2130,16 @@ public class PostService {
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-              new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Post.class))));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, User.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPostsByUid_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getUserByUid_result.class, metaDataMap);
     }
 
-    public getPostsByUid_result() {
+    public getUserByUid_result() {
     }
 
-    public getPostsByUid_result(
-      List<Post> success)
+    public getUserByUid_result(
+      User success)
     {
       this();
       this.success = success;
@@ -2144,18 +2148,14 @@ public class PostService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public getPostsByUid_result(getPostsByUid_result other) {
+    public getUserByUid_result(getUserByUid_result other) {
       if (other.isSetSuccess()) {
-        List<Post> __this__success = new ArrayList<Post>();
-        for (Post other_element : other.success) {
-          __this__success.add(new Post(other_element));
-        }
-        this.success = __this__success;
+        this.success = new User(other.success);
       }
     }
 
-    public getPostsByUid_result deepCopy() {
-      return new getPostsByUid_result(this);
+    public getUserByUid_result deepCopy() {
+      return new getUserByUid_result(this);
     }
 
     @Override
@@ -2163,26 +2163,11 @@ public class PostService {
       this.success = null;
     }
 
-    public int getSuccessSize() {
-      return (this.success == null) ? 0 : this.success.size();
-    }
-
-    public java.util.Iterator<Post> getSuccessIterator() {
-      return (this.success == null) ? null : this.success.iterator();
-    }
-
-    public void addToSuccess(Post elem) {
-      if (this.success == null) {
-        this.success = new ArrayList<Post>();
-      }
-      this.success.add(elem);
-    }
-
-    public List<Post> getSuccess() {
+    public User getSuccess() {
       return this.success;
     }
 
-    public getPostsByUid_result setSuccess(List<Post> success) {
+    public getUserByUid_result setSuccess(User success) {
       this.success = success;
       return this;
     }
@@ -2208,7 +2193,7 @@ public class PostService {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((List<Post>)value);
+          setSuccess((User)value);
         }
         break;
 
@@ -2241,12 +2226,12 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof getPostsByUid_result)
-        return this.equals((getPostsByUid_result)that);
+      if (that instanceof getUserByUid_result)
+        return this.equals((getUserByUid_result)that);
       return false;
     }
 
-    public boolean equals(getPostsByUid_result that) {
+    public boolean equals(getUserByUid_result that) {
       if (that == null)
         return false;
 
@@ -2267,13 +2252,13 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(getPostsByUid_result other) {
+    public int compareTo(getUserByUid_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      getPostsByUid_result typedOther = (getPostsByUid_result)other;
+      getUserByUid_result typedOther = (getUserByUid_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -2302,7 +2287,7 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("getPostsByUid_result(");
+      StringBuilder sb = new StringBuilder("getUserByUid_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -2336,15 +2321,15 @@ public class PostService {
       }
     }
 
-    private static class getPostsByUid_resultStandardSchemeFactory implements SchemeFactory {
-      public getPostsByUid_resultStandardScheme getScheme() {
-        return new getPostsByUid_resultStandardScheme();
+    private static class getUserByUid_resultStandardSchemeFactory implements SchemeFactory {
+      public getUserByUid_resultStandardScheme getScheme() {
+        return new getUserByUid_resultStandardScheme();
       }
     }
 
-    private static class getPostsByUid_resultStandardScheme extends StandardScheme<getPostsByUid_result> {
+    private static class getUserByUid_resultStandardScheme extends StandardScheme<getUserByUid_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPostsByUid_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserByUid_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2355,19 +2340,9 @@ public class PostService {
           }
           switch (schemeField.id) {
             case 0: // SUCCESS
-              if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
-                {
-                  org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
-                  struct.success = new ArrayList<Post>(_list0.size);
-                  for (int _i1 = 0; _i1 < _list0.size; ++_i1)
-                  {
-                    Post _elem2; // required
-                    _elem2 = new Post();
-                    _elem2.read(iprot);
-                    struct.success.add(_elem2);
-                  }
-                  iprot.readListEnd();
-                }
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+                struct.success = new User();
+                struct.success.read(iprot);
                 struct.setSuccessIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -2384,20 +2359,13 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPostsByUid_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserByUid_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
         if (struct.success != null) {
           oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
-          {
-            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.success.size()));
-            for (Post _iter3 : struct.success)
-            {
-              _iter3.write(oprot);
-            }
-            oprot.writeListEnd();
-          }
+          struct.success.write(oprot);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -2406,16 +2374,16 @@ public class PostService {
 
     }
 
-    private static class getPostsByUid_resultTupleSchemeFactory implements SchemeFactory {
-      public getPostsByUid_resultTupleScheme getScheme() {
-        return new getPostsByUid_resultTupleScheme();
+    private static class getUserByUid_resultTupleSchemeFactory implements SchemeFactory {
+      public getUserByUid_resultTupleScheme getScheme() {
+        return new getUserByUid_resultTupleScheme();
       }
     }
 
-    private static class getPostsByUid_resultTupleScheme extends TupleScheme<getPostsByUid_result> {
+    private static class getUserByUid_resultTupleScheme extends TupleScheme<getUserByUid_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getPostsByUid_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserByUid_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -2423,32 +2391,17 @@ public class PostService {
         }
         oprot.writeBitSet(optionals, 1);
         if (struct.isSetSuccess()) {
-          {
-            oprot.writeI32(struct.success.size());
-            for (Post _iter4 : struct.success)
-            {
-              _iter4.write(oprot);
-            }
-          }
+          struct.success.write(oprot);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getPostsByUid_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserByUid_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          {
-            org.apache.thrift.protocol.TList _list5 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-            struct.success = new ArrayList<Post>(_list5.size);
-            for (int _i6 = 0; _i6 < _list5.size; ++_i6)
-            {
-              Post _elem7; // required
-              _elem7 = new Post();
-              _elem7.read(iprot);
-              struct.success.add(_elem7);
-            }
-          }
+          struct.success = new User();
+          struct.success.read(iprot);
           struct.setSuccessIsSet(true);
         }
       }
@@ -2456,20 +2409,22 @@ public class PostService {
 
   }
 
-  public static class getPostsAll_args implements org.apache.thrift.TBase<getPostsAll_args, getPostsAll_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPostsAll_args");
+  public static class getUserByNickName_args implements org.apache.thrift.TBase<getUserByNickName_args, getUserByNickName_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getUserByNickName_args");
 
+    private static final org.apache.thrift.protocol.TField NICK_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("nickName", org.apache.thrift.protocol.TType.STRING, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new getPostsAll_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new getPostsAll_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new getUserByNickName_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new getUserByNickName_argsTupleSchemeFactory());
     }
 
+    public String nickName; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-;
+      NICK_NAME((short)1, "nickName");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -2484,6 +2439,8 @@ public class PostService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
+          case 1: // NICK_NAME
+            return NICK_NAME;
           default:
             return null;
         }
@@ -2522,37 +2479,87 @@ public class PostService {
         return _fieldName;
       }
     }
+
+    // isset id assignments
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.NICK_NAME, new org.apache.thrift.meta_data.FieldMetaData("nickName", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPostsAll_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getUserByNickName_args.class, metaDataMap);
     }
 
-    public getPostsAll_args() {
+    public getUserByNickName_args() {
+    }
+
+    public getUserByNickName_args(
+      String nickName)
+    {
+      this();
+      this.nickName = nickName;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public getPostsAll_args(getPostsAll_args other) {
+    public getUserByNickName_args(getUserByNickName_args other) {
+      if (other.isSetNickName()) {
+        this.nickName = other.nickName;
+      }
     }
 
-    public getPostsAll_args deepCopy() {
-      return new getPostsAll_args(this);
+    public getUserByNickName_args deepCopy() {
+      return new getUserByNickName_args(this);
     }
 
     @Override
     public void clear() {
+      this.nickName = null;
+    }
+
+    public String getNickName() {
+      return this.nickName;
+    }
+
+    public getUserByNickName_args setNickName(String nickName) {
+      this.nickName = nickName;
+      return this;
+    }
+
+    public void unsetNickName() {
+      this.nickName = null;
+    }
+
+    /** Returns true if field nickName is set (has been assigned a value) and false otherwise */
+    public boolean isSetNickName() {
+      return this.nickName != null;
+    }
+
+    public void setNickNameIsSet(boolean value) {
+      if (!value) {
+        this.nickName = null;
+      }
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
+      case NICK_NAME:
+        if (value == null) {
+          unsetNickName();
+        } else {
+          setNickName((String)value);
+        }
+        break;
+
       }
     }
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
+      case NICK_NAME:
+        return getNickName();
+
       }
       throw new IllegalStateException();
     }
@@ -2564,6 +2571,8 @@ public class PostService {
       }
 
       switch (field) {
+      case NICK_NAME:
+        return isSetNickName();
       }
       throw new IllegalStateException();
     }
@@ -2572,14 +2581,23 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof getPostsAll_args)
-        return this.equals((getPostsAll_args)that);
+      if (that instanceof getUserByNickName_args)
+        return this.equals((getUserByNickName_args)that);
       return false;
     }
 
-    public boolean equals(getPostsAll_args that) {
+    public boolean equals(getUserByNickName_args that) {
       if (that == null)
         return false;
+
+      boolean this_present_nickName = true && this.isSetNickName();
+      boolean that_present_nickName = true && that.isSetNickName();
+      if (this_present_nickName || that_present_nickName) {
+        if (!(this_present_nickName && that_present_nickName))
+          return false;
+        if (!this.nickName.equals(that.nickName))
+          return false;
+      }
 
       return true;
     }
@@ -2589,14 +2607,24 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(getPostsAll_args other) {
+    public int compareTo(getUserByNickName_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      getPostsAll_args typedOther = (getPostsAll_args)other;
+      getUserByNickName_args typedOther = (getUserByNickName_args)other;
 
+      lastComparison = Boolean.valueOf(isSetNickName()).compareTo(typedOther.isSetNickName());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetNickName()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.nickName, typedOther.nickName);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
       return 0;
     }
 
@@ -2614,9 +2642,16 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("getPostsAll_args(");
+      StringBuilder sb = new StringBuilder("getUserByNickName_args(");
       boolean first = true;
 
+      sb.append("nickName:");
+      if (this.nickName == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.nickName);
+      }
+      first = false;
       sb.append(")");
       return sb.toString();
     }
@@ -2641,15 +2676,15 @@ public class PostService {
       }
     }
 
-    private static class getPostsAll_argsStandardSchemeFactory implements SchemeFactory {
-      public getPostsAll_argsStandardScheme getScheme() {
-        return new getPostsAll_argsStandardScheme();
+    private static class getUserByNickName_argsStandardSchemeFactory implements SchemeFactory {
+      public getUserByNickName_argsStandardScheme getScheme() {
+        return new getUserByNickName_argsStandardScheme();
       }
     }
 
-    private static class getPostsAll_argsStandardScheme extends StandardScheme<getPostsAll_args> {
+    private static class getUserByNickName_argsStandardScheme extends StandardScheme<getUserByNickName_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPostsAll_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserByNickName_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2659,6 +2694,14 @@ public class PostService {
             break;
           }
           switch (schemeField.id) {
+            case 1: // NICK_NAME
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.nickName = iprot.readString();
+                struct.setNickNameIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
             default:
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
           }
@@ -2670,49 +2713,67 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPostsAll_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserByNickName_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.nickName != null) {
+          oprot.writeFieldBegin(NICK_NAME_FIELD_DESC);
+          oprot.writeString(struct.nickName);
+          oprot.writeFieldEnd();
+        }
         oprot.writeFieldStop();
         oprot.writeStructEnd();
       }
 
     }
 
-    private static class getPostsAll_argsTupleSchemeFactory implements SchemeFactory {
-      public getPostsAll_argsTupleScheme getScheme() {
-        return new getPostsAll_argsTupleScheme();
+    private static class getUserByNickName_argsTupleSchemeFactory implements SchemeFactory {
+      public getUserByNickName_argsTupleScheme getScheme() {
+        return new getUserByNickName_argsTupleScheme();
       }
     }
 
-    private static class getPostsAll_argsTupleScheme extends TupleScheme<getPostsAll_args> {
+    private static class getUserByNickName_argsTupleScheme extends TupleScheme<getUserByNickName_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getPostsAll_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserByNickName_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetNickName()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetNickName()) {
+          oprot.writeString(struct.nickName);
+        }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getPostsAll_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserByNickName_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.nickName = iprot.readString();
+          struct.setNickNameIsSet(true);
+        }
       }
     }
 
   }
 
-  public static class getPostsAll_result implements org.apache.thrift.TBase<getPostsAll_result, getPostsAll_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getPostsAll_result");
+  public static class getUserByNickName_result implements org.apache.thrift.TBase<getUserByNickName_result, getUserByNickName_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("getUserByNickName_result");
 
-    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.LIST, (short)0);
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRUCT, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new getPostsAll_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new getPostsAll_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new getUserByNickName_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new getUserByNickName_resultTupleSchemeFactory());
     }
 
-    public List<Post> success; // required
+    public User success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -2777,17 +2838,16 @@ public class PostService {
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-              new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Post.class))));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, User.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getPostsAll_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(getUserByNickName_result.class, metaDataMap);
     }
 
-    public getPostsAll_result() {
+    public getUserByNickName_result() {
     }
 
-    public getPostsAll_result(
-      List<Post> success)
+    public getUserByNickName_result(
+      User success)
     {
       this();
       this.success = success;
@@ -2796,18 +2856,14 @@ public class PostService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public getPostsAll_result(getPostsAll_result other) {
+    public getUserByNickName_result(getUserByNickName_result other) {
       if (other.isSetSuccess()) {
-        List<Post> __this__success = new ArrayList<Post>();
-        for (Post other_element : other.success) {
-          __this__success.add(new Post(other_element));
-        }
-        this.success = __this__success;
+        this.success = new User(other.success);
       }
     }
 
-    public getPostsAll_result deepCopy() {
-      return new getPostsAll_result(this);
+    public getUserByNickName_result deepCopy() {
+      return new getUserByNickName_result(this);
     }
 
     @Override
@@ -2815,26 +2871,11 @@ public class PostService {
       this.success = null;
     }
 
-    public int getSuccessSize() {
-      return (this.success == null) ? 0 : this.success.size();
-    }
-
-    public java.util.Iterator<Post> getSuccessIterator() {
-      return (this.success == null) ? null : this.success.iterator();
-    }
-
-    public void addToSuccess(Post elem) {
-      if (this.success == null) {
-        this.success = new ArrayList<Post>();
-      }
-      this.success.add(elem);
-    }
-
-    public List<Post> getSuccess() {
+    public User getSuccess() {
       return this.success;
     }
 
-    public getPostsAll_result setSuccess(List<Post> success) {
+    public getUserByNickName_result setSuccess(User success) {
       this.success = success;
       return this;
     }
@@ -2860,7 +2901,7 @@ public class PostService {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((List<Post>)value);
+          setSuccess((User)value);
         }
         break;
 
@@ -2893,12 +2934,12 @@ public class PostService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof getPostsAll_result)
-        return this.equals((getPostsAll_result)that);
+      if (that instanceof getUserByNickName_result)
+        return this.equals((getUserByNickName_result)that);
       return false;
     }
 
-    public boolean equals(getPostsAll_result that) {
+    public boolean equals(getUserByNickName_result that) {
       if (that == null)
         return false;
 
@@ -2919,13 +2960,13 @@ public class PostService {
       return 0;
     }
 
-    public int compareTo(getPostsAll_result other) {
+    public int compareTo(getUserByNickName_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      getPostsAll_result typedOther = (getPostsAll_result)other;
+      getUserByNickName_result typedOther = (getUserByNickName_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -2954,7 +2995,7 @@ public class PostService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("getPostsAll_result(");
+      StringBuilder sb = new StringBuilder("getUserByNickName_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -2988,15 +3029,15 @@ public class PostService {
       }
     }
 
-    private static class getPostsAll_resultStandardSchemeFactory implements SchemeFactory {
-      public getPostsAll_resultStandardScheme getScheme() {
-        return new getPostsAll_resultStandardScheme();
+    private static class getUserByNickName_resultStandardSchemeFactory implements SchemeFactory {
+      public getUserByNickName_resultStandardScheme getScheme() {
+        return new getUserByNickName_resultStandardScheme();
       }
     }
 
-    private static class getPostsAll_resultStandardScheme extends StandardScheme<getPostsAll_result> {
+    private static class getUserByNickName_resultStandardScheme extends StandardScheme<getUserByNickName_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPostsAll_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserByNickName_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -3007,19 +3048,9 @@ public class PostService {
           }
           switch (schemeField.id) {
             case 0: // SUCCESS
-              if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
-                {
-                  org.apache.thrift.protocol.TList _list8 = iprot.readListBegin();
-                  struct.success = new ArrayList<Post>(_list8.size);
-                  for (int _i9 = 0; _i9 < _list8.size; ++_i9)
-                  {
-                    Post _elem10; // required
-                    _elem10 = new Post();
-                    _elem10.read(iprot);
-                    struct.success.add(_elem10);
-                  }
-                  iprot.readListEnd();
-                }
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+                struct.success = new User();
+                struct.success.read(iprot);
                 struct.setSuccessIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -3036,20 +3067,13 @@ public class PostService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPostsAll_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserByNickName_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
         if (struct.success != null) {
           oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
-          {
-            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.success.size()));
-            for (Post _iter11 : struct.success)
-            {
-              _iter11.write(oprot);
-            }
-            oprot.writeListEnd();
-          }
+          struct.success.write(oprot);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -3058,16 +3082,16 @@ public class PostService {
 
     }
 
-    private static class getPostsAll_resultTupleSchemeFactory implements SchemeFactory {
-      public getPostsAll_resultTupleScheme getScheme() {
-        return new getPostsAll_resultTupleScheme();
+    private static class getUserByNickName_resultTupleSchemeFactory implements SchemeFactory {
+      public getUserByNickName_resultTupleScheme getScheme() {
+        return new getUserByNickName_resultTupleScheme();
       }
     }
 
-    private static class getPostsAll_resultTupleScheme extends TupleScheme<getPostsAll_result> {
+    private static class getUserByNickName_resultTupleScheme extends TupleScheme<getUserByNickName_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getPostsAll_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserByNickName_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -3075,32 +3099,17 @@ public class PostService {
         }
         oprot.writeBitSet(optionals, 1);
         if (struct.isSetSuccess()) {
-          {
-            oprot.writeI32(struct.success.size());
-            for (Post _iter12 : struct.success)
-            {
-              _iter12.write(oprot);
-            }
-          }
+          struct.success.write(oprot);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getPostsAll_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserByNickName_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          {
-            org.apache.thrift.protocol.TList _list13 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-            struct.success = new ArrayList<Post>(_list13.size);
-            for (int _i14 = 0; _i14 < _list13.size; ++_i14)
-            {
-              Post _elem15; // required
-              _elem15 = new Post();
-              _elem15.read(iprot);
-              struct.success.add(_elem15);
-            }
-          }
+          struct.success = new User();
+          struct.success.read(iprot);
           struct.setSuccessIsSet(true);
         }
       }

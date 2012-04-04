@@ -5,19 +5,19 @@
 //
 var Thrift = require('thrift').Thrift;
 
-var ttypes = require('./post_types');
+var ttypes = require('./user_types');
 //HELPER FUNCTIONS AND STRUCTURES
 
-var PostService_setPost_args = function(args) {
-  this.post = null;
+var UserService_setUser_args = function(args) {
+  this.user = null;
   if (args) {
-    if (args.post !== undefined) {
-      this.post = args.post;
+    if (args.user !== undefined) {
+      this.user = args.user;
     }
   }
 };
-PostService_setPost_args.prototype = {};
-PostService_setPost_args.prototype.read = function(input) {
+UserService_setUser_args.prototype = {};
+UserService_setUser_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -32,8 +32,8 @@ PostService_setPost_args.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.post = new ttypes.Post();
-        this.post.read(input);
+        this.user = new ttypes.User();
+        this.user.read(input);
       } else {
         input.skip(ftype);
       }
@@ -50,11 +50,11 @@ PostService_setPost_args.prototype.read = function(input) {
   return;
 };
 
-PostService_setPost_args.prototype.write = function(output) {
-  output.writeStructBegin('PostService_setPost_args');
-  if (this.post) {
-    output.writeFieldBegin('post', Thrift.Type.STRUCT, 1);
-    this.post.write(output);
+UserService_setUser_args.prototype.write = function(output) {
+  output.writeStructBegin('UserService_setUser_args');
+  if (this.user) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -62,10 +62,10 @@ PostService_setPost_args.prototype.write = function(output) {
   return;
 };
 
-var PostService_setPost_result = function(args) {
+var UserService_setUser_result = function(args) {
 };
-PostService_setPost_result.prototype = {};
-PostService_setPost_result.prototype.read = function(input) {
+UserService_setUser_result.prototype = {};
+UserService_setUser_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -83,23 +83,23 @@ PostService_setPost_result.prototype.read = function(input) {
   return;
 };
 
-PostService_setPost_result.prototype.write = function(output) {
-  output.writeStructBegin('PostService_setPost_result');
+UserService_setUser_result.prototype.write = function(output) {
+  output.writeStructBegin('UserService_setUser_result');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-var PostService_getPost_args = function(args) {
-  this.postId = null;
+var UserService_getUserByEmail_args = function(args) {
+  this.email = null;
   if (args) {
-    if (args.postId !== undefined) {
-      this.postId = args.postId;
+    if (args.email !== undefined) {
+      this.email = args.email;
     }
   }
 };
-PostService_getPost_args.prototype = {};
-PostService_getPost_args.prototype.read = function(input) {
+UserService_getUserByEmail_args.prototype = {};
+UserService_getUserByEmail_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -113,8 +113,8 @@ PostService_getPost_args.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.I32) {
-        this.postId = input.readI32();
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -131,11 +131,11 @@ PostService_getPost_args.prototype.read = function(input) {
   return;
 };
 
-PostService_getPost_args.prototype.write = function(output) {
-  output.writeStructBegin('PostService_getPost_args');
-  if (this.postId) {
-    output.writeFieldBegin('postId', Thrift.Type.I32, 1);
-    output.writeI32(this.postId);
+UserService_getUserByEmail_args.prototype.write = function(output) {
+  output.writeStructBegin('UserService_getUserByEmail_args');
+  if (this.email) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -143,7 +143,7 @@ PostService_getPost_args.prototype.write = function(output) {
   return;
 };
 
-var PostService_getPost_result = function(args) {
+var UserService_getUserByEmail_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined) {
@@ -151,8 +151,8 @@ var PostService_getPost_result = function(args) {
     }
   }
 };
-PostService_getPost_result.prototype = {};
-PostService_getPost_result.prototype.read = function(input) {
+UserService_getUserByEmail_result.prototype = {};
+UserService_getUserByEmail_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -167,7 +167,7 @@ PostService_getPost_result.prototype.read = function(input) {
     {
       case 0:
       if (ftype == Thrift.Type.STRUCT) {
-        this.success = new ttypes.Post();
+        this.success = new ttypes.User();
         this.success.read(input);
       } else {
         input.skip(ftype);
@@ -185,8 +185,8 @@ PostService_getPost_result.prototype.read = function(input) {
   return;
 };
 
-PostService_getPost_result.prototype.write = function(output) {
-  output.writeStructBegin('PostService_getPost_result');
+UserService_getUserByEmail_result.prototype.write = function(output) {
+  output.writeStructBegin('UserService_getUserByEmail_result');
   if (this.success) {
     output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
     this.success.write(output);
@@ -197,7 +197,7 @@ PostService_getPost_result.prototype.write = function(output) {
   return;
 };
 
-var PostService_getPostsByUid_args = function(args) {
+var UserService_getUserByUid_args = function(args) {
   this.uid = null;
   if (args) {
     if (args.uid !== undefined) {
@@ -205,8 +205,8 @@ var PostService_getPostsByUid_args = function(args) {
     }
   }
 };
-PostService_getPostsByUid_args.prototype = {};
-PostService_getPostsByUid_args.prototype.read = function(input) {
+UserService_getUserByUid_args.prototype = {};
+UserService_getUserByUid_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -238,8 +238,8 @@ PostService_getPostsByUid_args.prototype.read = function(input) {
   return;
 };
 
-PostService_getPostsByUid_args.prototype.write = function(output) {
-  output.writeStructBegin('PostService_getPostsByUid_args');
+UserService_getUserByUid_args.prototype.write = function(output) {
+  output.writeStructBegin('UserService_getUserByUid_args');
   if (this.uid) {
     output.writeFieldBegin('uid', Thrift.Type.I32, 1);
     output.writeI32(this.uid);
@@ -250,7 +250,7 @@ PostService_getPostsByUid_args.prototype.write = function(output) {
   return;
 };
 
-var PostService_getPostsByUid_result = function(args) {
+var UserService_getUserByUid_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined) {
@@ -258,8 +258,8 @@ var PostService_getPostsByUid_result = function(args) {
     }
   }
 };
-PostService_getPostsByUid_result.prototype = {};
-PostService_getPostsByUid_result.prototype.read = function(input) {
+UserService_getUserByUid_result.prototype = {};
+UserService_getUserByUid_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -273,22 +273,9 @@ PostService_getPostsByUid_result.prototype.read = function(input) {
     switch (fid)
     {
       case 0:
-      if (ftype == Thrift.Type.LIST) {
-        var _size0 = 0;
-        var _rtmp34;
-        this.success = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
-        {
-          var elem6 = null;
-          elem6 = new ttypes.Post();
-          elem6.read(input);
-          this.success.push(elem6);
-        }
-        input.readListEnd();
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.User();
+        this.success.read(input);
       } else {
         input.skip(ftype);
       }
@@ -305,20 +292,11 @@ PostService_getPostsByUid_result.prototype.read = function(input) {
   return;
 };
 
-PostService_getPostsByUid_result.prototype.write = function(output) {
-  output.writeStructBegin('PostService_getPostsByUid_result');
+UserService_getUserByUid_result.prototype.write = function(output) {
+  output.writeStructBegin('UserService_getUserByUid_result');
   if (this.success) {
-    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
-    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
-    for (var iter7 in this.success)
-    {
-      if (this.success.hasOwnProperty(iter7))
-      {
-        iter7 = this.success[iter7];
-        iter7.write(output);
-      }
-    }
-    output.writeListEnd();
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -326,44 +304,16 @@ PostService_getPostsByUid_result.prototype.write = function(output) {
   return;
 };
 
-var PostService_getPostsAll_args = function(args) {
-};
-PostService_getPostsAll_args.prototype = {};
-PostService_getPostsAll_args.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    input.skip(ftype);
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-PostService_getPostsAll_args.prototype.write = function(output) {
-  output.writeStructBegin('PostService_getPostsAll_args');
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-var PostService_getPostsAll_result = function(args) {
-  this.success = null;
+var UserService_getUserByNickName_args = function(args) {
+  this.nickName = null;
   if (args) {
-    if (args.success !== undefined) {
-      this.success = args.success;
+    if (args.nickName !== undefined) {
+      this.nickName = args.nickName;
     }
   }
 };
-PostService_getPostsAll_result.prototype = {};
-PostService_getPostsAll_result.prototype.read = function(input) {
+UserService_getUserByNickName_args.prototype = {};
+UserService_getUserByNickName_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -376,23 +326,9 @@ PostService_getPostsAll_result.prototype.read = function(input) {
     }
     switch (fid)
     {
-      case 0:
-      if (ftype == Thrift.Type.LIST) {
-        var _size8 = 0;
-        var _rtmp312;
-        this.success = [];
-        var _etype11 = 0;
-        _rtmp312 = input.readListBegin();
-        _etype11 = _rtmp312.etype;
-        _size8 = _rtmp312.size;
-        for (var _i13 = 0; _i13 < _size8; ++_i13)
-        {
-          var elem14 = null;
-          elem14 = new ttypes.Post();
-          elem14.read(input);
-          this.success.push(elem14);
-        }
-        input.readListEnd();
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.nickName = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -409,20 +345,11 @@ PostService_getPostsAll_result.prototype.read = function(input) {
   return;
 };
 
-PostService_getPostsAll_result.prototype.write = function(output) {
-  output.writeStructBegin('PostService_getPostsAll_result');
-  if (this.success) {
-    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
-    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
-    for (var iter15 in this.success)
-    {
-      if (this.success.hasOwnProperty(iter15))
-      {
-        iter15 = this.success[iter15];
-        iter15.write(output);
-      }
-    }
-    output.writeListEnd();
+UserService_getUserByNickName_args.prototype.write = function(output) {
+  output.writeStructBegin('UserService_getUserByNickName_args');
+  if (this.nickName) {
+    output.writeFieldBegin('nickName', Thrift.Type.STRING, 1);
+    output.writeString(this.nickName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -430,30 +357,84 @@ PostService_getPostsAll_result.prototype.write = function(output) {
   return;
 };
 
-var PostServiceClient = exports.Client = function(output, pClass) {
+var UserService_getUserByNickName_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+UserService_getUserByNickName_result.prototype = {};
+UserService_getUserByNickName_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.User();
+        this.success.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+UserService_getUserByNickName_result.prototype.write = function(output) {
+  output.writeStructBegin('UserService_getUserByNickName_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var UserServiceClient = exports.Client = function(output, pClass) {
     this.output = output;
     this.pClass = pClass;
     this.seqid = 0;
     this._reqs = {};
 };
-PostServiceClient.prototype = {};
-PostServiceClient.prototype.setPost = function(post, callback) {
+UserServiceClient.prototype = {};
+UserServiceClient.prototype.setUser = function(user, callback) {
   this.seqid += 1;
   this._reqs[this.seqid] = callback;
-  this.send_setPost(post);
+  this.send_setUser(user);
 };
 
-PostServiceClient.prototype.send_setPost = function(post) {
+UserServiceClient.prototype.send_setUser = function(user) {
   var output = new this.pClass(this.output);
-  output.writeMessageBegin('setPost', Thrift.MessageType.CALL, this.seqid);
-  var args = new PostService_setPost_args();
-  args.post = post;
+  output.writeMessageBegin('setUser', Thrift.MessageType.CALL, this.seqid);
+  var args = new UserService_setUser_args();
+  args.user = user;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-PostServiceClient.prototype.recv_setPost = function(input,mtype,rseqid) {
+UserServiceClient.prototype.recv_setUser = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -462,29 +443,29 @@ PostServiceClient.prototype.recv_setPost = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new PostService_setPost_result();
+  var result = new UserService_setUser_result();
   result.read(input);
   input.readMessageEnd();
 
   callback(null)
 };
-PostServiceClient.prototype.getPost = function(postId, callback) {
+UserServiceClient.prototype.getUserByEmail = function(email, callback) {
   this.seqid += 1;
   this._reqs[this.seqid] = callback;
-  this.send_getPost(postId);
+  this.send_getUserByEmail(email);
 };
 
-PostServiceClient.prototype.send_getPost = function(postId) {
+UserServiceClient.prototype.send_getUserByEmail = function(email) {
   var output = new this.pClass(this.output);
-  output.writeMessageBegin('getPost', Thrift.MessageType.CALL, this.seqid);
-  var args = new PostService_getPost_args();
-  args.postId = postId;
+  output.writeMessageBegin('getUserByEmail', Thrift.MessageType.CALL, this.seqid);
+  var args = new UserService_getUserByEmail_args();
+  args.email = email;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-PostServiceClient.prototype.recv_getPost = function(input,mtype,rseqid) {
+UserServiceClient.prototype.recv_getUserByEmail = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -493,32 +474,32 @@ PostServiceClient.prototype.recv_getPost = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new PostService_getPost_result();
+  var result = new UserService_getUserByEmail_result();
   result.read(input);
   input.readMessageEnd();
 
   if (null !== result.success) {
     return callback(null, result.success);
   }
-  return callback('getPost failed: unknown result');
+  return callback('getUserByEmail failed: unknown result');
 };
-PostServiceClient.prototype.getPostsByUid = function(uid, callback) {
+UserServiceClient.prototype.getUserByUid = function(uid, callback) {
   this.seqid += 1;
   this._reqs[this.seqid] = callback;
-  this.send_getPostsByUid(uid);
+  this.send_getUserByUid(uid);
 };
 
-PostServiceClient.prototype.send_getPostsByUid = function(uid) {
+UserServiceClient.prototype.send_getUserByUid = function(uid) {
   var output = new this.pClass(this.output);
-  output.writeMessageBegin('getPostsByUid', Thrift.MessageType.CALL, this.seqid);
-  var args = new PostService_getPostsByUid_args();
+  output.writeMessageBegin('getUserByUid', Thrift.MessageType.CALL, this.seqid);
+  var args = new UserService_getUserByUid_args();
   args.uid = uid;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-PostServiceClient.prototype.recv_getPostsByUid = function(input,mtype,rseqid) {
+UserServiceClient.prototype.recv_getUserByUid = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -527,31 +508,32 @@ PostServiceClient.prototype.recv_getPostsByUid = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new PostService_getPostsByUid_result();
+  var result = new UserService_getUserByUid_result();
   result.read(input);
   input.readMessageEnd();
 
   if (null !== result.success) {
     return callback(null, result.success);
   }
-  return callback('getPostsByUid failed: unknown result');
+  return callback('getUserByUid failed: unknown result');
 };
-PostServiceClient.prototype.getPostsAll = function(callback) {
+UserServiceClient.prototype.getUserByNickName = function(nickName, callback) {
   this.seqid += 1;
   this._reqs[this.seqid] = callback;
-  this.send_getPostsAll();
+  this.send_getUserByNickName(nickName);
 };
 
-PostServiceClient.prototype.send_getPostsAll = function() {
+UserServiceClient.prototype.send_getUserByNickName = function(nickName) {
   var output = new this.pClass(this.output);
-  output.writeMessageBegin('getPostsAll', Thrift.MessageType.CALL, this.seqid);
-  var args = new PostService_getPostsAll_args();
+  output.writeMessageBegin('getUserByNickName', Thrift.MessageType.CALL, this.seqid);
+  var args = new UserService_getUserByNickName_args();
+  args.nickName = nickName;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-PostServiceClient.prototype.recv_getPostsAll = function(input,mtype,rseqid) {
+UserServiceClient.prototype.recv_getUserByNickName = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -560,19 +542,19 @@ PostServiceClient.prototype.recv_getPostsAll = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new PostService_getPostsAll_result();
+  var result = new UserService_getUserByNickName_result();
   result.read(input);
   input.readMessageEnd();
 
   if (null !== result.success) {
     return callback(null, result.success);
   }
-  return callback('getPostsAll failed: unknown result');
+  return callback('getUserByNickName failed: unknown result');
 };
-var PostServiceProcessor = exports.Processor = function(handler) {
+var UserServiceProcessor = exports.Processor = function(handler) {
   this._handler = handler
 }
-PostServiceProcessor.prototype.process = function(input, output) {
+UserServiceProcessor.prototype.process = function(input, output) {
   var r = input.readMessageBegin();
   if (this['process_' + r.fname]) {
     return this['process_' + r.fname].call(this, r.rseqid, input, output);
@@ -587,56 +569,56 @@ PostServiceProcessor.prototype.process = function(input, output) {
   }
 }
 
-PostServiceProcessor.prototype.process_setPost = function(seqid, input, output) {
-  var args = new PostService_setPost_args();
+UserServiceProcessor.prototype.process_setUser = function(seqid, input, output) {
+  var args = new UserService_setUser_args();
   args.read(input);
   input.readMessageEnd();
-  var result = new PostService_setPost_result();
-  this._handler.setPost(args.post, function (success) {
+  var result = new UserService_setUser_result();
+  this._handler.setUser(args.user, function (success) {
     result.success = success;
-    output.writeMessageBegin("setPost", Thrift.MessageType.REPLY, seqid);
+    output.writeMessageBegin("setUser", Thrift.MessageType.REPLY, seqid);
     result.write(output);
     output.writeMessageEnd();
     output.flush();
   })
 }
 
-PostServiceProcessor.prototype.process_getPost = function(seqid, input, output) {
-  var args = new PostService_getPost_args();
+UserServiceProcessor.prototype.process_getUserByEmail = function(seqid, input, output) {
+  var args = new UserService_getUserByEmail_args();
   args.read(input);
   input.readMessageEnd();
-  var result = new PostService_getPost_result();
-  this._handler.getPost(args.postId, function (success) {
+  var result = new UserService_getUserByEmail_result();
+  this._handler.getUserByEmail(args.email, function (success) {
     result.success = success;
-    output.writeMessageBegin("getPost", Thrift.MessageType.REPLY, seqid);
+    output.writeMessageBegin("getUserByEmail", Thrift.MessageType.REPLY, seqid);
     result.write(output);
     output.writeMessageEnd();
     output.flush();
   })
 }
 
-PostServiceProcessor.prototype.process_getPostsByUid = function(seqid, input, output) {
-  var args = new PostService_getPostsByUid_args();
+UserServiceProcessor.prototype.process_getUserByUid = function(seqid, input, output) {
+  var args = new UserService_getUserByUid_args();
   args.read(input);
   input.readMessageEnd();
-  var result = new PostService_getPostsByUid_result();
-  this._handler.getPostsByUid(args.uid, function (success) {
+  var result = new UserService_getUserByUid_result();
+  this._handler.getUserByUid(args.uid, function (success) {
     result.success = success;
-    output.writeMessageBegin("getPostsByUid", Thrift.MessageType.REPLY, seqid);
+    output.writeMessageBegin("getUserByUid", Thrift.MessageType.REPLY, seqid);
     result.write(output);
     output.writeMessageEnd();
     output.flush();
   })
 }
 
-PostServiceProcessor.prototype.process_getPostsAll = function(seqid, input, output) {
-  var args = new PostService_getPostsAll_args();
+UserServiceProcessor.prototype.process_getUserByNickName = function(seqid, input, output) {
+  var args = new UserService_getUserByNickName_args();
   args.read(input);
   input.readMessageEnd();
-  var result = new PostService_getPostsAll_result();
-  this._handler.getPostsAll(function (success) {
+  var result = new UserService_getUserByNickName_result();
+  this._handler.getUserByNickName(args.nickName, function (success) {
     result.success = success;
-    output.writeMessageBegin("getPostsAll", Thrift.MessageType.REPLY, seqid);
+    output.writeMessageBegin("getUserByNickName", Thrift.MessageType.REPLY, seqid);
     result.write(output);
     output.writeMessageEnd();
     output.flush();

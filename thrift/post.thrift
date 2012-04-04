@@ -10,7 +10,7 @@ struct Post {
 }
 
 service PostService {
-    void store(1: Post post),
+    void setPost(1: Post post),
     Post getPost(1: i32 postId),
     list<Post> getPostsByUid(1: i32 uid),
     list<Post> getPostsAll()
