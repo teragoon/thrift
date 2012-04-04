@@ -55,49 +55,41 @@ struct Attachment {
 service IminThriftService {
   User signup(1: string username, 2: string password),
   void finkout(1: string username),
-  AuthToken login(1: string username, 2: string password);
-  AuthToken login(1: string token);
-  void logout(1: AuthToken token);
+  AuthToken login(1: string username, 2: string password),
+  AuthToken login(1: string token),
+  void logout(1: AuthToken token),
+  User findUser(int id),
+  User findUser(String username),
+  List<User> findUsers(String expr),
+
+  List<User> getFollowers(User user),
+
+  List<User> getFollowings(User user),
   
-  User findUser(int id);
+  Post findPost(i32 id),
 
-  User findUser(String username);
+  List<Post> findPosts(Poi poi),
 
-  List<User> findUsers(String expr);
+  List<Post> findPosts(User user),
 
-  List<User> getFollowers(User user);
+  List<Post> findPosts(Position position, double radius, String expr),
 
-  List<User> getFollowings(User user);
-  
-  Post findPost(i32 id);
-
-  List<Post> findPosts(Poi poi);
-
-  List<Post> findPosts(User user);
-
-  List<Post> findPosts(Position position, double radius, String expr);
-
-  void submitPost(Post post);
+  void submitPost(Post post),
     
-  void deletePost(Post post);
+  void deletePost(Post post),
   
-  Comment findComment(i32 id);
+  Comment findComment(i32 id),
 
-  List<Comment> findComments(User user);
+  List<Comment> findComments(User user),
 
-  List<Comment> findComments(Post post);
+  List<Comment> findComments(Post post),
 
-  void submitComment(Post post, Comment comment);
+  void submitComment(Post post, Comment comment),
     
-  void deleteComment(Comment comment);
-  
-  Attachment findAttachment(i32 id);
-
-  List<Attachment> findAttachments(User user);
-
-  List<Attachment> findAttachments(Post post);
-
-  void submitAttachment(Post post, Attachment attachment);
-
+  void deleteComment(Comment comment),
+  Attachment findAttachment(i32 id),
+  List<Attachment> findAttachments(User user),
+  List<Attachment> findAttachments(Post post),
+  void submitAttachment(Post post, Attachment attachment),
   void deleteAttachment(Attachment attachment);
 }
