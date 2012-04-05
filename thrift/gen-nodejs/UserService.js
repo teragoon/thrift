@@ -8,6 +8,126 @@ var Thrift = require('thrift').Thrift;
 var ttypes = require('./user_types');
 //HELPER FUNCTIONS AND STRUCTURES
 
+var UserService_login_args = function(args) {
+  this.username = null;
+  this.password = null;
+  if (args) {
+    if (args.username !== undefined) {
+      this.username = args.username;
+    }
+    if (args.password !== undefined) {
+      this.password = args.password;
+    }
+  }
+};
+UserService_login_args.prototype = {};
+UserService_login_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.password = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+UserService_login_args.prototype.write = function(output) {
+  output.writeStructBegin('UserService_login_args');
+  if (this.username) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 1);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  if (this.password) {
+    output.writeFieldBegin('password', Thrift.Type.STRING, 2);
+    output.writeString(this.password);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var UserService_login_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+UserService_login_result.prototype = {};
+UserService_login_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.User();
+        this.success.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+UserService_login_result.prototype.write = function(output) {
+  output.writeStructBegin('UserService_login_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 var UserService_signup_args = function(args) {
   this.username = null;
   this.password = null;
@@ -430,6 +550,41 @@ var UserServiceClient = exports.Client = function(output, pClass) {
     this._reqs = {};
 };
 UserServiceClient.prototype = {};
+UserServiceClient.prototype.login = function(username, password, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_login(username, password);
+};
+
+UserServiceClient.prototype.send_login = function(username, password) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('login', Thrift.MessageType.CALL, this.seqid);
+  var args = new UserService_login_args();
+  args.username = username;
+  args.password = password;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+UserServiceClient.prototype.recv_login = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new UserService_login_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('login failed: unknown result');
+};
 UserServiceClient.prototype.signup = function(username, password, callback) {
   this.seqid += 1;
   this._reqs[this.seqid] = callback;
@@ -580,6 +735,20 @@ UserServiceProcessor.prototype.process = function(input, output) {
     output.writeMessageEnd();
     output.flush();
   }
+}
+
+UserServiceProcessor.prototype.process_login = function(seqid, input, output) {
+  var args = new UserService_login_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new UserService_login_result();
+  this._handler.login(args.username, args.password, function (success) {
+    result.success = success;
+    output.writeMessageBegin("login", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
 }
 
 UserServiceProcessor.prototype.process_signup = function(seqid, input, output) {
