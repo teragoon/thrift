@@ -11,6 +11,14 @@ struct AuthToken {
   3: bool authenticated
 }
 
+struct Poi {
+  1: i32 id,
+  2: string name,
+  3: double latitude,
+  4: double longitude,
+  5: i32 type
+}
+
 struct Post {
   1: i32 id,
   2: Poi poi,
@@ -30,14 +38,6 @@ struct Comment {
   5: i64 time,
   6: double latitude,
   7: double longitude
-}
-
-struct Poi {
-  1: i32 id,
-  2: string name,
-  3: double latitude,
-  4: double longitude,
-  5: i32 type
 }
 
 struct Attachment {
