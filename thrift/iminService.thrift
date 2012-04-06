@@ -50,6 +50,11 @@ struct Attachment {
   7: double longitude
 }
 
+struct Position {
+  1: double latitude,
+  2: double logitude
+}
+
 
 service IminThriftService {
   User signup(1: string username, 2: string password),
@@ -64,21 +69,21 @@ service IminThriftService {
   
   User findUserById(1: i32 id),
   
-  User findUserByName(1: string username)
-  /*
-  List<User> findUsers(1: string expr),
+  User findUserByName(1: string username),
   
-  List<User> getFollowers(1: User user),
+  list<User> findUsers(1: string expr),
   
-  List<User> getFollowings(1: User user),
+  list<User> getFollowers(1: User user),
+  
+  list<User> getFollowings(1: User user),
   
   Post findPostById(1: i32 id),
 
-  List<Post> findPostsByPoi(1: Poi poi),
+  list<Post> findPostsByPoi(1: Poi poi),
 
-  List<Post> findPostsByUser(1: User user),
+  list<Post> findPostsByUser(1: User user),
 
-  List<Post> findPosts(1: Position position, 2: double radius, 3: string expr),
+  list<Post> findPosts(1: Position position, 2: double radius, 3: string expr),
 
   void submitPost(1: Post post),
     
@@ -86,9 +91,9 @@ service IminThriftService {
   
   Comment findCommentById(1: i32 id),
 
-  List<Comment> findCommentsByUser(1: User user),
+  list<Comment> findCommentsByUser(1: User user),
 
-  List<Comment> findCommentsByPost(1: Post post),
+  list<Comment> findCommentsByPost(1: Post post),
 
   void submitComment(1: Post post, 2: Comment comment),
     
@@ -96,12 +101,12 @@ service IminThriftService {
   
   Attachment findAttachmentById(1: i32 id),
   
-  List<Attachment> findAttachmentsByUser(1: User user),
+  list<Attachment> findAttachmentsByUser(1: User user),
   
-  List<Attachment> findAttachmentsByPost(1: Post post),
+  list<Attachment> findAttachmentsByPost(1: Post post),
   
   void submitAttachment(1: Post post, 2: Attachment attachment),
   
   void deleteAttachment(1: Attachment attachment)
-*/
+
 }

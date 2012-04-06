@@ -732,6 +732,2175 @@ IminThriftService_findUserByName_result.prototype.write = function(output) {
   return;
 };
 
+var IminThriftService_findUsers_args = function(args) {
+  this.expr = null;
+  if (args) {
+    if (args.expr !== undefined) {
+      this.expr = args.expr;
+    }
+  }
+};
+IminThriftService_findUsers_args.prototype = {};
+IminThriftService_findUsers_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.expr = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findUsers_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findUsers_args');
+  if (this.expr) {
+    output.writeFieldBegin('expr', Thrift.Type.STRING, 1);
+    output.writeString(this.expr);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findUsers_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findUsers_result.prototype = {};
+IminThriftService_findUsers_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.success = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = new ttypes.User();
+          elem6.read(input);
+          this.success.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findUsers_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findUsers_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter7 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter7))
+      {
+        iter7 = this.success[iter7];
+        iter7.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_getFollowers_args = function(args) {
+  this.user = null;
+  if (args) {
+    if (args.user !== undefined) {
+      this.user = args.user;
+    }
+  }
+};
+IminThriftService_getFollowers_args.prototype = {};
+IminThriftService_getFollowers_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.user = new ttypes.User();
+        this.user.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_getFollowers_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_getFollowers_args');
+  if (this.user) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_getFollowers_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_getFollowers_result.prototype = {};
+IminThriftService_getFollowers_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size8 = 0;
+        var _rtmp312;
+        this.success = [];
+        var _etype11 = 0;
+        _rtmp312 = input.readListBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
+        {
+          var elem14 = null;
+          elem14 = new ttypes.User();
+          elem14.read(input);
+          this.success.push(elem14);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_getFollowers_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_getFollowers_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter15 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter15))
+      {
+        iter15 = this.success[iter15];
+        iter15.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_getFollowings_args = function(args) {
+  this.user = null;
+  if (args) {
+    if (args.user !== undefined) {
+      this.user = args.user;
+    }
+  }
+};
+IminThriftService_getFollowings_args.prototype = {};
+IminThriftService_getFollowings_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.user = new ttypes.User();
+        this.user.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_getFollowings_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_getFollowings_args');
+  if (this.user) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_getFollowings_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_getFollowings_result.prototype = {};
+IminThriftService_getFollowings_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size16 = 0;
+        var _rtmp320;
+        this.success = [];
+        var _etype19 = 0;
+        _rtmp320 = input.readListBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
+        {
+          var elem22 = null;
+          elem22 = new ttypes.User();
+          elem22.read(input);
+          this.success.push(elem22);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_getFollowings_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_getFollowings_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter23 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter23))
+      {
+        iter23 = this.success[iter23];
+        iter23.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findPostById_args = function(args) {
+  this.id = null;
+  if (args) {
+    if (args.id !== undefined) {
+      this.id = args.id;
+    }
+  }
+};
+IminThriftService_findPostById_args.prototype = {};
+IminThriftService_findPostById_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.id = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findPostById_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findPostById_args');
+  if (this.id) {
+    output.writeFieldBegin('id', Thrift.Type.I32, 1);
+    output.writeI32(this.id);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findPostById_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findPostById_result.prototype = {};
+IminThriftService_findPostById_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.Post();
+        this.success.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findPostById_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findPostById_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findPostsByPoi_args = function(args) {
+  this.poi = null;
+  if (args) {
+    if (args.poi !== undefined) {
+      this.poi = args.poi;
+    }
+  }
+};
+IminThriftService_findPostsByPoi_args.prototype = {};
+IminThriftService_findPostsByPoi_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.poi = new ttypes.Poi();
+        this.poi.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findPostsByPoi_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findPostsByPoi_args');
+  if (this.poi) {
+    output.writeFieldBegin('poi', Thrift.Type.STRUCT, 1);
+    this.poi.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findPostsByPoi_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findPostsByPoi_result.prototype = {};
+IminThriftService_findPostsByPoi_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size24 = 0;
+        var _rtmp328;
+        this.success = [];
+        var _etype27 = 0;
+        _rtmp328 = input.readListBegin();
+        _etype27 = _rtmp328.etype;
+        _size24 = _rtmp328.size;
+        for (var _i29 = 0; _i29 < _size24; ++_i29)
+        {
+          var elem30 = null;
+          elem30 = new ttypes.Post();
+          elem30.read(input);
+          this.success.push(elem30);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findPostsByPoi_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findPostsByPoi_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter31 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter31))
+      {
+        iter31 = this.success[iter31];
+        iter31.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findPostsByUser_args = function(args) {
+  this.user = null;
+  if (args) {
+    if (args.user !== undefined) {
+      this.user = args.user;
+    }
+  }
+};
+IminThriftService_findPostsByUser_args.prototype = {};
+IminThriftService_findPostsByUser_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.user = new ttypes.User();
+        this.user.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findPostsByUser_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findPostsByUser_args');
+  if (this.user) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findPostsByUser_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findPostsByUser_result.prototype = {};
+IminThriftService_findPostsByUser_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size32 = 0;
+        var _rtmp336;
+        this.success = [];
+        var _etype35 = 0;
+        _rtmp336 = input.readListBegin();
+        _etype35 = _rtmp336.etype;
+        _size32 = _rtmp336.size;
+        for (var _i37 = 0; _i37 < _size32; ++_i37)
+        {
+          var elem38 = null;
+          elem38 = new ttypes.Post();
+          elem38.read(input);
+          this.success.push(elem38);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findPostsByUser_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findPostsByUser_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter39 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter39))
+      {
+        iter39 = this.success[iter39];
+        iter39.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findPosts_args = function(args) {
+  this.position = null;
+  this.radius = null;
+  this.expr = null;
+  if (args) {
+    if (args.position !== undefined) {
+      this.position = args.position;
+    }
+    if (args.radius !== undefined) {
+      this.radius = args.radius;
+    }
+    if (args.expr !== undefined) {
+      this.expr = args.expr;
+    }
+  }
+};
+IminThriftService_findPosts_args.prototype = {};
+IminThriftService_findPosts_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.position = new ttypes.Position();
+        this.position.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.DOUBLE) {
+        this.radius = input.readDouble();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.expr = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findPosts_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findPosts_args');
+  if (this.position) {
+    output.writeFieldBegin('position', Thrift.Type.STRUCT, 1);
+    this.position.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.radius) {
+    output.writeFieldBegin('radius', Thrift.Type.DOUBLE, 2);
+    output.writeDouble(this.radius);
+    output.writeFieldEnd();
+  }
+  if (this.expr) {
+    output.writeFieldBegin('expr', Thrift.Type.STRING, 3);
+    output.writeString(this.expr);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findPosts_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findPosts_result.prototype = {};
+IminThriftService_findPosts_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size40 = 0;
+        var _rtmp344;
+        this.success = [];
+        var _etype43 = 0;
+        _rtmp344 = input.readListBegin();
+        _etype43 = _rtmp344.etype;
+        _size40 = _rtmp344.size;
+        for (var _i45 = 0; _i45 < _size40; ++_i45)
+        {
+          var elem46 = null;
+          elem46 = new ttypes.Post();
+          elem46.read(input);
+          this.success.push(elem46);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findPosts_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findPosts_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter47 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter47))
+      {
+        iter47 = this.success[iter47];
+        iter47.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_submitPost_args = function(args) {
+  this.post = null;
+  if (args) {
+    if (args.post !== undefined) {
+      this.post = args.post;
+    }
+  }
+};
+IminThriftService_submitPost_args.prototype = {};
+IminThriftService_submitPost_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.post = new ttypes.Post();
+        this.post.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_submitPost_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_submitPost_args');
+  if (this.post) {
+    output.writeFieldBegin('post', Thrift.Type.STRUCT, 1);
+    this.post.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_submitPost_result = function(args) {
+};
+IminThriftService_submitPost_result.prototype = {};
+IminThriftService_submitPost_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_submitPost_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_submitPost_result');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_deletePost_args = function(args) {
+  this.post = null;
+  if (args) {
+    if (args.post !== undefined) {
+      this.post = args.post;
+    }
+  }
+};
+IminThriftService_deletePost_args.prototype = {};
+IminThriftService_deletePost_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.post = new ttypes.Post();
+        this.post.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_deletePost_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_deletePost_args');
+  if (this.post) {
+    output.writeFieldBegin('post', Thrift.Type.STRUCT, 1);
+    this.post.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_deletePost_result = function(args) {
+};
+IminThriftService_deletePost_result.prototype = {};
+IminThriftService_deletePost_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_deletePost_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_deletePost_result');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findCommentById_args = function(args) {
+  this.id = null;
+  if (args) {
+    if (args.id !== undefined) {
+      this.id = args.id;
+    }
+  }
+};
+IminThriftService_findCommentById_args.prototype = {};
+IminThriftService_findCommentById_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.id = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findCommentById_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findCommentById_args');
+  if (this.id) {
+    output.writeFieldBegin('id', Thrift.Type.I32, 1);
+    output.writeI32(this.id);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findCommentById_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findCommentById_result.prototype = {};
+IminThriftService_findCommentById_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.Comment();
+        this.success.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findCommentById_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findCommentById_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findCommentsByUser_args = function(args) {
+  this.user = null;
+  if (args) {
+    if (args.user !== undefined) {
+      this.user = args.user;
+    }
+  }
+};
+IminThriftService_findCommentsByUser_args.prototype = {};
+IminThriftService_findCommentsByUser_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.user = new ttypes.User();
+        this.user.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findCommentsByUser_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findCommentsByUser_args');
+  if (this.user) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findCommentsByUser_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findCommentsByUser_result.prototype = {};
+IminThriftService_findCommentsByUser_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size48 = 0;
+        var _rtmp352;
+        this.success = [];
+        var _etype51 = 0;
+        _rtmp352 = input.readListBegin();
+        _etype51 = _rtmp352.etype;
+        _size48 = _rtmp352.size;
+        for (var _i53 = 0; _i53 < _size48; ++_i53)
+        {
+          var elem54 = null;
+          elem54 = new ttypes.Comment();
+          elem54.read(input);
+          this.success.push(elem54);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findCommentsByUser_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findCommentsByUser_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter55 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter55))
+      {
+        iter55 = this.success[iter55];
+        iter55.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findCommentsByPost_args = function(args) {
+  this.post = null;
+  if (args) {
+    if (args.post !== undefined) {
+      this.post = args.post;
+    }
+  }
+};
+IminThriftService_findCommentsByPost_args.prototype = {};
+IminThriftService_findCommentsByPost_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.post = new ttypes.Post();
+        this.post.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findCommentsByPost_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findCommentsByPost_args');
+  if (this.post) {
+    output.writeFieldBegin('post', Thrift.Type.STRUCT, 1);
+    this.post.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findCommentsByPost_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findCommentsByPost_result.prototype = {};
+IminThriftService_findCommentsByPost_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size56 = 0;
+        var _rtmp360;
+        this.success = [];
+        var _etype59 = 0;
+        _rtmp360 = input.readListBegin();
+        _etype59 = _rtmp360.etype;
+        _size56 = _rtmp360.size;
+        for (var _i61 = 0; _i61 < _size56; ++_i61)
+        {
+          var elem62 = null;
+          elem62 = new ttypes.Comment();
+          elem62.read(input);
+          this.success.push(elem62);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findCommentsByPost_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findCommentsByPost_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter63 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter63))
+      {
+        iter63 = this.success[iter63];
+        iter63.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_submitComment_args = function(args) {
+  this.post = null;
+  this.comment = null;
+  if (args) {
+    if (args.post !== undefined) {
+      this.post = args.post;
+    }
+    if (args.comment !== undefined) {
+      this.comment = args.comment;
+    }
+  }
+};
+IminThriftService_submitComment_args.prototype = {};
+IminThriftService_submitComment_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.post = new ttypes.Post();
+        this.post.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.comment = new ttypes.Comment();
+        this.comment.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_submitComment_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_submitComment_args');
+  if (this.post) {
+    output.writeFieldBegin('post', Thrift.Type.STRUCT, 1);
+    this.post.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.comment) {
+    output.writeFieldBegin('comment', Thrift.Type.STRUCT, 2);
+    this.comment.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_submitComment_result = function(args) {
+};
+IminThriftService_submitComment_result.prototype = {};
+IminThriftService_submitComment_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_submitComment_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_submitComment_result');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_deleteComment_args = function(args) {
+  this.comment = null;
+  if (args) {
+    if (args.comment !== undefined) {
+      this.comment = args.comment;
+    }
+  }
+};
+IminThriftService_deleteComment_args.prototype = {};
+IminThriftService_deleteComment_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.comment = new ttypes.Comment();
+        this.comment.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_deleteComment_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_deleteComment_args');
+  if (this.comment) {
+    output.writeFieldBegin('comment', Thrift.Type.STRUCT, 1);
+    this.comment.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_deleteComment_result = function(args) {
+};
+IminThriftService_deleteComment_result.prototype = {};
+IminThriftService_deleteComment_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_deleteComment_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_deleteComment_result');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findAttachmentById_args = function(args) {
+  this.id = null;
+  if (args) {
+    if (args.id !== undefined) {
+      this.id = args.id;
+    }
+  }
+};
+IminThriftService_findAttachmentById_args.prototype = {};
+IminThriftService_findAttachmentById_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.id = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findAttachmentById_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findAttachmentById_args');
+  if (this.id) {
+    output.writeFieldBegin('id', Thrift.Type.I32, 1);
+    output.writeI32(this.id);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findAttachmentById_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findAttachmentById_result.prototype = {};
+IminThriftService_findAttachmentById_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.Attachment();
+        this.success.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findAttachmentById_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findAttachmentById_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findAttachmentsByUser_args = function(args) {
+  this.user = null;
+  if (args) {
+    if (args.user !== undefined) {
+      this.user = args.user;
+    }
+  }
+};
+IminThriftService_findAttachmentsByUser_args.prototype = {};
+IminThriftService_findAttachmentsByUser_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.user = new ttypes.User();
+        this.user.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findAttachmentsByUser_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findAttachmentsByUser_args');
+  if (this.user) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findAttachmentsByUser_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findAttachmentsByUser_result.prototype = {};
+IminThriftService_findAttachmentsByUser_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size64 = 0;
+        var _rtmp368;
+        this.success = [];
+        var _etype67 = 0;
+        _rtmp368 = input.readListBegin();
+        _etype67 = _rtmp368.etype;
+        _size64 = _rtmp368.size;
+        for (var _i69 = 0; _i69 < _size64; ++_i69)
+        {
+          var elem70 = null;
+          elem70 = new ttypes.Attachment();
+          elem70.read(input);
+          this.success.push(elem70);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findAttachmentsByUser_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findAttachmentsByUser_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter71 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter71))
+      {
+        iter71 = this.success[iter71];
+        iter71.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findAttachmentsByPost_args = function(args) {
+  this.post = null;
+  if (args) {
+    if (args.post !== undefined) {
+      this.post = args.post;
+    }
+  }
+};
+IminThriftService_findAttachmentsByPost_args.prototype = {};
+IminThriftService_findAttachmentsByPost_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.post = new ttypes.Post();
+        this.post.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findAttachmentsByPost_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findAttachmentsByPost_args');
+  if (this.post) {
+    output.writeFieldBegin('post', Thrift.Type.STRUCT, 1);
+    this.post.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_findAttachmentsByPost_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined) {
+      this.success = args.success;
+    }
+  }
+};
+IminThriftService_findAttachmentsByPost_result.prototype = {};
+IminThriftService_findAttachmentsByPost_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size72 = 0;
+        var _rtmp376;
+        this.success = [];
+        var _etype75 = 0;
+        _rtmp376 = input.readListBegin();
+        _etype75 = _rtmp376.etype;
+        _size72 = _rtmp376.size;
+        for (var _i77 = 0; _i77 < _size72; ++_i77)
+        {
+          var elem78 = null;
+          elem78 = new ttypes.Attachment();
+          elem78.read(input);
+          this.success.push(elem78);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_findAttachmentsByPost_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_findAttachmentsByPost_result');
+  if (this.success) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
+    for (var iter79 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter79))
+      {
+        iter79 = this.success[iter79];
+        iter79.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_submitAttachment_args = function(args) {
+  this.post = null;
+  this.attachment = null;
+  if (args) {
+    if (args.post !== undefined) {
+      this.post = args.post;
+    }
+    if (args.attachment !== undefined) {
+      this.attachment = args.attachment;
+    }
+  }
+};
+IminThriftService_submitAttachment_args.prototype = {};
+IminThriftService_submitAttachment_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.post = new ttypes.Post();
+        this.post.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.attachment = new ttypes.Attachment();
+        this.attachment.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_submitAttachment_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_submitAttachment_args');
+  if (this.post) {
+    output.writeFieldBegin('post', Thrift.Type.STRUCT, 1);
+    this.post.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.attachment) {
+    output.writeFieldBegin('attachment', Thrift.Type.STRUCT, 2);
+    this.attachment.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_submitAttachment_result = function(args) {
+};
+IminThriftService_submitAttachment_result.prototype = {};
+IminThriftService_submitAttachment_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_submitAttachment_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_submitAttachment_result');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_deleteAttachment_args = function(args) {
+  this.attachment = null;
+  if (args) {
+    if (args.attachment !== undefined) {
+      this.attachment = args.attachment;
+    }
+  }
+};
+IminThriftService_deleteAttachment_args.prototype = {};
+IminThriftService_deleteAttachment_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.attachment = new ttypes.Attachment();
+        this.attachment.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_deleteAttachment_args.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_deleteAttachment_args');
+  if (this.attachment) {
+    output.writeFieldBegin('attachment', Thrift.Type.STRUCT, 1);
+    this.attachment.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var IminThriftService_deleteAttachment_result = function(args) {
+};
+IminThriftService_deleteAttachment_result.prototype = {};
+IminThriftService_deleteAttachment_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IminThriftService_deleteAttachment_result.prototype.write = function(output) {
+  output.writeStructBegin('IminThriftService_deleteAttachment_result');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 var IminThriftServiceClient = exports.Client = function(output, pClass) {
     this.output = output;
     this.pClass = pClass;
@@ -973,6 +3142,638 @@ IminThriftServiceClient.prototype.recv_findUserByName = function(input,mtype,rse
   }
   return callback('findUserByName failed: unknown result');
 };
+IminThriftServiceClient.prototype.findUsers = function(expr, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findUsers(expr);
+};
+
+IminThriftServiceClient.prototype.send_findUsers = function(expr) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findUsers', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findUsers_args();
+  args.expr = expr;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findUsers = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findUsers_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findUsers failed: unknown result');
+};
+IminThriftServiceClient.prototype.getFollowers = function(user, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_getFollowers(user);
+};
+
+IminThriftServiceClient.prototype.send_getFollowers = function(user) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('getFollowers', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_getFollowers_args();
+  args.user = user;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_getFollowers = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_getFollowers_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('getFollowers failed: unknown result');
+};
+IminThriftServiceClient.prototype.getFollowings = function(user, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_getFollowings(user);
+};
+
+IminThriftServiceClient.prototype.send_getFollowings = function(user) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('getFollowings', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_getFollowings_args();
+  args.user = user;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_getFollowings = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_getFollowings_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('getFollowings failed: unknown result');
+};
+IminThriftServiceClient.prototype.findPostById = function(id, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findPostById(id);
+};
+
+IminThriftServiceClient.prototype.send_findPostById = function(id) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findPostById', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findPostById_args();
+  args.id = id;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findPostById = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findPostById_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findPostById failed: unknown result');
+};
+IminThriftServiceClient.prototype.findPostsByPoi = function(poi, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findPostsByPoi(poi);
+};
+
+IminThriftServiceClient.prototype.send_findPostsByPoi = function(poi) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findPostsByPoi', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findPostsByPoi_args();
+  args.poi = poi;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findPostsByPoi = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findPostsByPoi_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findPostsByPoi failed: unknown result');
+};
+IminThriftServiceClient.prototype.findPostsByUser = function(user, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findPostsByUser(user);
+};
+
+IminThriftServiceClient.prototype.send_findPostsByUser = function(user) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findPostsByUser', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findPostsByUser_args();
+  args.user = user;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findPostsByUser = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findPostsByUser_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findPostsByUser failed: unknown result');
+};
+IminThriftServiceClient.prototype.findPosts = function(position, radius, expr, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findPosts(position, radius, expr);
+};
+
+IminThriftServiceClient.prototype.send_findPosts = function(position, radius, expr) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findPosts', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findPosts_args();
+  args.position = position;
+  args.radius = radius;
+  args.expr = expr;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findPosts = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findPosts_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findPosts failed: unknown result');
+};
+IminThriftServiceClient.prototype.submitPost = function(post, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_submitPost(post);
+};
+
+IminThriftServiceClient.prototype.send_submitPost = function(post) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('submitPost', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_submitPost_args();
+  args.post = post;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_submitPost = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_submitPost_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  callback(null)
+};
+IminThriftServiceClient.prototype.deletePost = function(post, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_deletePost(post);
+};
+
+IminThriftServiceClient.prototype.send_deletePost = function(post) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('deletePost', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_deletePost_args();
+  args.post = post;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_deletePost = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_deletePost_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  callback(null)
+};
+IminThriftServiceClient.prototype.findCommentById = function(id, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findCommentById(id);
+};
+
+IminThriftServiceClient.prototype.send_findCommentById = function(id) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findCommentById', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findCommentById_args();
+  args.id = id;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findCommentById = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findCommentById_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findCommentById failed: unknown result');
+};
+IminThriftServiceClient.prototype.findCommentsByUser = function(user, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findCommentsByUser(user);
+};
+
+IminThriftServiceClient.prototype.send_findCommentsByUser = function(user) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findCommentsByUser', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findCommentsByUser_args();
+  args.user = user;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findCommentsByUser = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findCommentsByUser_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findCommentsByUser failed: unknown result');
+};
+IminThriftServiceClient.prototype.findCommentsByPost = function(post, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findCommentsByPost(post);
+};
+
+IminThriftServiceClient.prototype.send_findCommentsByPost = function(post) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findCommentsByPost', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findCommentsByPost_args();
+  args.post = post;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findCommentsByPost = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findCommentsByPost_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findCommentsByPost failed: unknown result');
+};
+IminThriftServiceClient.prototype.submitComment = function(post, comment, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_submitComment(post, comment);
+};
+
+IminThriftServiceClient.prototype.send_submitComment = function(post, comment) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('submitComment', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_submitComment_args();
+  args.post = post;
+  args.comment = comment;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_submitComment = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_submitComment_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  callback(null)
+};
+IminThriftServiceClient.prototype.deleteComment = function(comment, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_deleteComment(comment);
+};
+
+IminThriftServiceClient.prototype.send_deleteComment = function(comment) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('deleteComment', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_deleteComment_args();
+  args.comment = comment;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_deleteComment = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_deleteComment_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  callback(null)
+};
+IminThriftServiceClient.prototype.findAttachmentById = function(id, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findAttachmentById(id);
+};
+
+IminThriftServiceClient.prototype.send_findAttachmentById = function(id) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findAttachmentById', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findAttachmentById_args();
+  args.id = id;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findAttachmentById = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findAttachmentById_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findAttachmentById failed: unknown result');
+};
+IminThriftServiceClient.prototype.findAttachmentsByUser = function(user, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findAttachmentsByUser(user);
+};
+
+IminThriftServiceClient.prototype.send_findAttachmentsByUser = function(user) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findAttachmentsByUser', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findAttachmentsByUser_args();
+  args.user = user;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findAttachmentsByUser = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findAttachmentsByUser_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findAttachmentsByUser failed: unknown result');
+};
+IminThriftServiceClient.prototype.findAttachmentsByPost = function(post, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_findAttachmentsByPost(post);
+};
+
+IminThriftServiceClient.prototype.send_findAttachmentsByPost = function(post) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('findAttachmentsByPost', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_findAttachmentsByPost_args();
+  args.post = post;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_findAttachmentsByPost = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_findAttachmentsByPost_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('findAttachmentsByPost failed: unknown result');
+};
+IminThriftServiceClient.prototype.submitAttachment = function(post, attachment, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_submitAttachment(post, attachment);
+};
+
+IminThriftServiceClient.prototype.send_submitAttachment = function(post, attachment) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('submitAttachment', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_submitAttachment_args();
+  args.post = post;
+  args.attachment = attachment;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_submitAttachment = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_submitAttachment_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  callback(null)
+};
+IminThriftServiceClient.prototype.deleteAttachment = function(attachment, callback) {
+  this.seqid += 1;
+  this._reqs[this.seqid] = callback;
+  this.send_deleteAttachment(attachment);
+};
+
+IminThriftServiceClient.prototype.send_deleteAttachment = function(attachment) {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('deleteAttachment', Thrift.MessageType.CALL, this.seqid);
+  var args = new IminThriftService_deleteAttachment_args();
+  args.attachment = attachment;
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+IminThriftServiceClient.prototype.recv_deleteAttachment = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new IminThriftService_deleteAttachment_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  callback(null)
+};
 var IminThriftServiceProcessor = exports.Processor = function(handler) {
   this._handler = handler
 }
@@ -1083,6 +3884,272 @@ IminThriftServiceProcessor.prototype.process_findUserByName = function(seqid, in
   this._handler.findUserByName(args.username, function (success) {
     result.success = success;
     output.writeMessageBegin("findUserByName", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findUsers = function(seqid, input, output) {
+  var args = new IminThriftService_findUsers_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findUsers_result();
+  this._handler.findUsers(args.expr, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findUsers", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_getFollowers = function(seqid, input, output) {
+  var args = new IminThriftService_getFollowers_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_getFollowers_result();
+  this._handler.getFollowers(args.user, function (success) {
+    result.success = success;
+    output.writeMessageBegin("getFollowers", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_getFollowings = function(seqid, input, output) {
+  var args = new IminThriftService_getFollowings_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_getFollowings_result();
+  this._handler.getFollowings(args.user, function (success) {
+    result.success = success;
+    output.writeMessageBegin("getFollowings", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findPostById = function(seqid, input, output) {
+  var args = new IminThriftService_findPostById_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findPostById_result();
+  this._handler.findPostById(args.id, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findPostById", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findPostsByPoi = function(seqid, input, output) {
+  var args = new IminThriftService_findPostsByPoi_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findPostsByPoi_result();
+  this._handler.findPostsByPoi(args.poi, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findPostsByPoi", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findPostsByUser = function(seqid, input, output) {
+  var args = new IminThriftService_findPostsByUser_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findPostsByUser_result();
+  this._handler.findPostsByUser(args.user, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findPostsByUser", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findPosts = function(seqid, input, output) {
+  var args = new IminThriftService_findPosts_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findPosts_result();
+  this._handler.findPosts(args.position, args.radius, args.expr, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findPosts", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_submitPost = function(seqid, input, output) {
+  var args = new IminThriftService_submitPost_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_submitPost_result();
+  this._handler.submitPost(args.post, function (success) {
+    result.success = success;
+    output.writeMessageBegin("submitPost", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_deletePost = function(seqid, input, output) {
+  var args = new IminThriftService_deletePost_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_deletePost_result();
+  this._handler.deletePost(args.post, function (success) {
+    result.success = success;
+    output.writeMessageBegin("deletePost", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findCommentById = function(seqid, input, output) {
+  var args = new IminThriftService_findCommentById_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findCommentById_result();
+  this._handler.findCommentById(args.id, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findCommentById", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findCommentsByUser = function(seqid, input, output) {
+  var args = new IminThriftService_findCommentsByUser_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findCommentsByUser_result();
+  this._handler.findCommentsByUser(args.user, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findCommentsByUser", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findCommentsByPost = function(seqid, input, output) {
+  var args = new IminThriftService_findCommentsByPost_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findCommentsByPost_result();
+  this._handler.findCommentsByPost(args.post, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findCommentsByPost", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_submitComment = function(seqid, input, output) {
+  var args = new IminThriftService_submitComment_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_submitComment_result();
+  this._handler.submitComment(args.post, args.comment, function (success) {
+    result.success = success;
+    output.writeMessageBegin("submitComment", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_deleteComment = function(seqid, input, output) {
+  var args = new IminThriftService_deleteComment_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_deleteComment_result();
+  this._handler.deleteComment(args.comment, function (success) {
+    result.success = success;
+    output.writeMessageBegin("deleteComment", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findAttachmentById = function(seqid, input, output) {
+  var args = new IminThriftService_findAttachmentById_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findAttachmentById_result();
+  this._handler.findAttachmentById(args.id, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findAttachmentById", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findAttachmentsByUser = function(seqid, input, output) {
+  var args = new IminThriftService_findAttachmentsByUser_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findAttachmentsByUser_result();
+  this._handler.findAttachmentsByUser(args.user, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findAttachmentsByUser", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_findAttachmentsByPost = function(seqid, input, output) {
+  var args = new IminThriftService_findAttachmentsByPost_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_findAttachmentsByPost_result();
+  this._handler.findAttachmentsByPost(args.post, function (success) {
+    result.success = success;
+    output.writeMessageBegin("findAttachmentsByPost", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_submitAttachment = function(seqid, input, output) {
+  var args = new IminThriftService_submitAttachment_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_submitAttachment_result();
+  this._handler.submitAttachment(args.post, args.attachment, function (success) {
+    result.success = success;
+    output.writeMessageBegin("submitAttachment", Thrift.MessageType.REPLY, seqid);
+    result.write(output);
+    output.writeMessageEnd();
+    output.flush();
+  })
+}
+
+IminThriftServiceProcessor.prototype.process_deleteAttachment = function(seqid, input, output) {
+  var args = new IminThriftService_deleteAttachment_args();
+  args.read(input);
+  input.readMessageEnd();
+  var result = new IminThriftService_deleteAttachment_result();
+  this._handler.deleteAttachment(args.attachment, function (success) {
+    result.success = success;
+    output.writeMessageBegin("deleteAttachment", Thrift.MessageType.REPLY, seqid);
     result.write(output);
     output.writeMessageEnd();
     output.flush();

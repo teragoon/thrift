@@ -727,3 +727,69 @@ Attachment.prototype.write = function(output) {
   return;
 };
 
+var Position = module.exports.Position = function(args) {
+  this.latitude = null;
+  this.logitude = null;
+  if (args) {
+    if (args.latitude !== undefined) {
+      this.latitude = args.latitude;
+    }
+    if (args.logitude !== undefined) {
+      this.logitude = args.logitude;
+    }
+  }
+};
+Position.prototype = {};
+Position.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.DOUBLE) {
+        this.latitude = input.readDouble();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.DOUBLE) {
+        this.logitude = input.readDouble();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Position.prototype.write = function(output) {
+  output.writeStructBegin('Position');
+  if (this.latitude) {
+    output.writeFieldBegin('latitude', Thrift.Type.DOUBLE, 1);
+    output.writeDouble(this.latitude);
+    output.writeFieldEnd();
+  }
+  if (this.logitude) {
+    output.writeFieldBegin('logitude', Thrift.Type.DOUBLE, 2);
+    output.writeDouble(this.logitude);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
