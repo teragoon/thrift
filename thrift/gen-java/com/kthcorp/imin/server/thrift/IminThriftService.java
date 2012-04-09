@@ -31,7 +31,7 @@ public class IminThriftService {
 
   public interface Iface {
 
-    public User signup(String username, String password) throws org.apache.thrift.TException;
+    public AuthToken signup(String username, String password) throws org.apache.thrift.TException;
 
     public void finkout(String username) throws org.apache.thrift.TException;
 
@@ -161,7 +161,7 @@ public class IminThriftService {
       super(iprot, oprot);
     }
 
-    public User signup(String username, String password) throws org.apache.thrift.TException
+    public AuthToken signup(String username, String password) throws org.apache.thrift.TException
     {
       send_signup(username, password);
       return recv_signup();
@@ -175,7 +175,7 @@ public class IminThriftService {
       sendBase("signup", args);
     }
 
-    public User recv_signup() throws org.apache.thrift.TException
+    public AuthToken recv_signup() throws org.apache.thrift.TException
     {
       signup_result result = new signup_result();
       receiveBase(result, "signup");
@@ -784,7 +784,7 @@ public class IminThriftService {
         prot.writeMessageEnd();
       }
 
-      public User getResult() throws org.apache.thrift.TException {
+      public AuthToken getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2533,7 +2533,7 @@ public class IminThriftService {
       schemes.put(TupleScheme.class, new signup_resultTupleSchemeFactory());
     }
 
-    public User success; // required
+    public AuthToken success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -2598,7 +2598,7 @@ public class IminThriftService {
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, User.class)));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, AuthToken.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(signup_result.class, metaDataMap);
     }
@@ -2607,7 +2607,7 @@ public class IminThriftService {
     }
 
     public signup_result(
-      User success)
+      AuthToken success)
     {
       this();
       this.success = success;
@@ -2618,7 +2618,7 @@ public class IminThriftService {
      */
     public signup_result(signup_result other) {
       if (other.isSetSuccess()) {
-        this.success = new User(other.success);
+        this.success = new AuthToken(other.success);
       }
     }
 
@@ -2631,11 +2631,11 @@ public class IminThriftService {
       this.success = null;
     }
 
-    public User getSuccess() {
+    public AuthToken getSuccess() {
       return this.success;
     }
 
-    public signup_result setSuccess(User success) {
+    public signup_result setSuccess(AuthToken success) {
       this.success = success;
       return this;
     }
@@ -2661,7 +2661,7 @@ public class IminThriftService {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((User)value);
+          setSuccess((AuthToken)value);
         }
         break;
 
@@ -2809,7 +2809,7 @@ public class IminThriftService {
           switch (schemeField.id) {
             case 0: // SUCCESS
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.success = new User();
+                struct.success = new AuthToken();
                 struct.success.read(iprot);
                 struct.setSuccessIsSet(true);
               } else { 
@@ -2868,7 +2868,7 @@ public class IminThriftService {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.success = new User();
+          struct.success = new AuthToken();
           struct.success.read(iprot);
           struct.setSuccessIsSet(true);
         }

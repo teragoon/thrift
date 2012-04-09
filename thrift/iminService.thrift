@@ -57,7 +57,7 @@ struct Position {
 
 
 service IminThriftService {
-  User signup(1: string username, 2: string password),
+  AuthToken signup(1: string username, 2: string password),
   
   void finkout(1: string username),
   

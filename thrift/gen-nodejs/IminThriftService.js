@@ -98,7 +98,7 @@ IminThriftService_signup_result.prototype.read = function(input) {
     {
       case 0:
       if (ftype == Thrift.Type.STRUCT) {
-        this.success = new ttypes.User();
+        this.success = new ttypes.AuthToken();
         this.success.read(input);
       } else {
         input.skip(ftype);
